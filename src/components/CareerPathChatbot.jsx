@@ -20,6 +20,8 @@ const chatbotCopy = {
     close: 'Close career path chatbot',
     title: 'AI Career Path Assistant',
     subtitle: 'Career counselor for tech beginners',
+    launcherTitle: 'Career Chatbot',
+    launcherSubtitle: 'Find your tech path',
     progress: 'Progress',
     bestMatch: 'Best Match',
     match: 'Match',
@@ -54,6 +56,8 @@ const chatbotCopy = {
     close: 'إغلاق مساعد اختيار المسار التقني',
     title: 'مساعد اختيار المسار بالذكاء الاصطناعي',
     subtitle: 'مرشد مهني للمبتدئين في التقنية',
+    launcherTitle: 'شات بوت المسار',
+    launcherSubtitle: 'اكتشف مجالك التقني',
     progress: 'التقدم',
     bestMatch: 'أفضل تطابق',
     match: 'تطابق',
@@ -373,11 +377,27 @@ export default function CareerPathChatbot() {
       <MotionButton
         type="button"
         onClick={() => setIsOpen(true)}
-        className={`focus-ring fixed bottom-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-ink-900 text-white shadow-glow transition hover:-translate-y-1 hover:bg-brand-600 dark:bg-brand-400 dark:text-ink-950 ${isArabic ? 'left-5' : 'right-5'}`}
+        className={`focus-ring fixed bottom-5 z-40 flex max-w-[calc(100vw-2.5rem)] items-center gap-3 rounded-lg border border-brand-300 bg-white/95 px-3 py-3 text-ink-950 shadow-glow backdrop-blur-xl transition hover:-translate-y-1 hover:border-purple-300 hover:bg-purple-50 dark:border-brand-400/40 dark:bg-ink-900/95 dark:text-white dark:hover:bg-ink-800 ${isArabic ? 'left-5' : 'right-5'}`}
         aria-label={copy.open}
-        whileTap={{ scale: 0.94 }}
+        whileTap={{ scale: 0.96 }}
       >
-        <MessageCircle size={24} />
+        <span className="relative grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-ink-900 text-brand-300 dark:bg-brand-400 dark:text-ink-950">
+          <MotionSpan
+            className="absolute inset-0 rounded-lg border border-brand-300"
+            animate={{ opacity: [0.75, 0], scale: [1, 1.35] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
+          />
+          <span className="absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-purple-400 dark:border-ink-900" />
+          <span className="absolute inset-0 rounded-lg bg-brand-400/25" />
+          <MessageCircle className="relative" size={24} />
+        </span>
+        <span className={`min-w-0 ${isArabic ? 'text-right' : 'text-left'}`}>
+          <span className="flex items-center gap-1.5 text-sm font-black">
+            <Sparkles size={15} className="text-purple-500" />
+            <span>{copy.launcherTitle}</span>
+          </span>
+          <span className="mt-0.5 block truncate text-xs font-bold text-slate-500 dark:text-slate-300">{copy.launcherSubtitle}</span>
+        </span>
       </MotionButton>
 
       <AnimatePresence>

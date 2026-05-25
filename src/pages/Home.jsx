@@ -35,7 +35,7 @@ export default function Home() {
               <Play size={17} />
               {t('home.hero.secondary')}
             </Link>
-            <a href={links.whatsappCommunity} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-mint-500 px-5 py-3 text-sm font-black text-ink-950 transition hover:bg-mint-400">
+            <a href={links.whatsappCommunity} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-purple-300 px-5 py-3 text-sm font-black text-ink-950 transition hover:bg-purple-400">
               {t('common.joinCommunity')}
             </a>
           </div>

@@ -67,7 +67,7 @@ export default function Navbar() {
             href={links.whatsappCommunity}
             target="_blank"
             rel="noreferrer"
-            className="focus-ring hidden items-center gap-2 rounded-lg bg-mint-500 px-3 py-2 text-sm font-black text-ink-950 transition hover:bg-mint-400 sm:inline-flex"
+            className="focus-ring hidden items-center gap-2 rounded-lg bg-purple-300 px-3 py-2 text-sm font-black text-ink-950 transition hover:bg-purple-400 sm:inline-flex"
           >
             <MessageCircle size={17} />
             {t('common.joinCommunity')}
@@ -117,7 +117,7 @@ export default function Navbar() {
               href={links.whatsappCommunity}
               target="_blank"
               rel="noreferrer"
-              className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg bg-mint-500 px-4 py-3 text-sm font-black text-ink-950"
+              className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg bg-purple-300 px-4 py-3 text-sm font-black text-ink-950"
             >
               <MessageCircle size={17} />
               {t('common.joinCommunity')}

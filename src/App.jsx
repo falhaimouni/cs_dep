@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import CareerPathChatbot from './components/CareerPathChatbot.jsx';
 import Footer from './components/layout/Footer.jsx';
 import Navbar from './components/layout/Navbar.jsx';
 import Contact from './pages/Contact.jsx';
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <CareerPathChatbot />
       <Footer />
     </div>
   );

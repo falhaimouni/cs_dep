@@ -25,7 +25,7 @@ export default function WorkshopCard({ item, delay = 0 }) {
           <Calendar size={16} />
           <span>{t(`${base}.date`)}</span>
         </div>
-        <a href="https://youtube.com" className="flex items-center gap-2 font-bold text-brand-600 dark:text-brand-300">
+        <a href="https://youtube.com" className="flex items-center gap-2 font-bold text-purple-600 dark:text-purple-400">
           <Video size={16} />
           <span>{isUpcoming ? t('workshops.register') : t('workshops.recording')}</span>
         </a>

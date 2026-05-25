@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <a href={links.whatsappCommunity} target="_blank" rel="noreferrer" className="rounded-lg bg-mint-500 px-4 py-2 text-sm font-black text-ink-950 transition hover:bg-mint-400">
+          <a href={links.whatsappCommunity} target="_blank" rel="noreferrer" className="rounded-lg bg-purple-300 px-4 py-2 text-sm font-black text-ink-950 transition hover:bg-purple-400">
             {t('common.joinCommunity')}
           </a>
           {[Github, Linkedin, Mail].map((Icon, index) => (

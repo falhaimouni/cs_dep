@@ -31,6 +31,12 @@ export default {
           300: '#fda4af',
           400: '#fb7185',
         },
+        purple: {
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+        },
       },
       boxShadow: {
         glow: '0 24px 80px rgba(6, 182, 212, 0.24)',

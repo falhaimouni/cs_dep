@@ -1,0 +1,170 @@
+{
+  "brand": {
+    "name": "CS Department Hub",
+    "tagline": "Learn. Build. Lead."
+  },
+  "nav": {
+    "home": "Home",
+    "resources": "Resources",
+    "workshops": "Workshops",
+    "roadmaps": "Roadmaps",
+    "team": "Team",
+    "contact": "Join Us",
+    "search": "Search resources",
+    "theme": "Toggle theme",
+    "menu": "Open menu"
+  },
+  "footer": {
+    "copy": "A frontend-only platform for organizing lectures, workshops, roadmaps, community opportunities, and external learning links.",
+    "join": "Join the community"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Computer Science student community",
+      "title": "One modern home for learning, workshops, and student growth.",
+      "subtitle": "Access department resources, follow career paths, register for workshops, and connect with the students building the technical community.",
+      "cta": "Explore resources",
+      "secondary": "View workshops",
+      "code": "const community = {\n  resources: ['Drive', 'Notion', 'Recordings'],\n  tracks: ['Web', 'AI', 'Cybersecurity', 'DevOps'],\n  mission: 'Students helping students build the future'\n};"
+    },
+    "stats": {
+      "resources": "organized files",
+      "workshops": "sessions hosted",
+      "tracks": "career paths",
+      "access": "student access"
+    },
+    "about": {
+      "eyebrow": "Department platform",
+      "title": "Designed for a growing academic and technical community",
+      "desc": "The hub keeps learning material, events, links, and announcements in one clear place while staying lightweight and easy to manage."
+    },
+    "mission": {
+      "title": "Mission",
+      "desc": "Help students learn faster through organized resources, peer-led workshops, and practical technical guidance."
+    },
+    "vision": {
+      "title": "Vision",
+      "desc": "Build a collaborative department culture where every student can discover a path, practice skills, and contribute to real projects."
+    },
+    "quick": {
+      "eyebrow": "Quick access",
+      "title": "Everything links to the tools students already use",
+      "desc": "Connect the frontend to Google Drive, Notion, Google Forms, recordings, and curated external resources.",
+      "drive": "Google Drive",
+      "driveDesc": "Lecture notes, sheets, summaries, and organized subject folders.",
+      "notion": "Notion Workspace",
+      "notionDesc": "Roadmaps, checklists, project ideas, and semester plans.",
+      "forms": "Google Forms",
+      "formsDesc": "Workshop registration, join requests, and feedback forms.",
+      "recordings": "Recordings",
+      "recordingsDesc": "Previous lectures and workshops for self-paced learning."
+    },
+    "featured": {
+      "eyebrow": "Featured workshops",
+      "title": "Upcoming sessions students can act on",
+      "desc": "Highlight practical events, registration links, and recordings from previous sessions."
+    }
+  },
+  "resources": {
+    "eyebrow": "Academic resources",
+    "title": "Subject libraries built for quick study access",
+    "desc": "Each subject card can connect students to summaries, lecture notes, practice sheets, Drive folders, and trusted external resources.",
+    "search": "Search by subject or material type",
+    "filter": "Filter",
+    "sidebar": "Subjects",
+    "types": ["Summaries", "Lecture notes", "Practice", "Drive links"],
+    "items": {
+      "algorithms": { "title": "Algorithms", "desc": "Sorting, graph algorithms, dynamic programming, complexity analysis, and practice problem sets." },
+      "dataStructures": { "title": "Data Structures", "desc": "Arrays, linked lists, trees, heaps, hash tables, and implementation notes." },
+      "operatingSystems": { "title": "Operating Systems", "desc": "Processes, threads, memory management, file systems, and synchronization resources." },
+      "databases": { "title": "Databases", "desc": "SQL, normalization, ER diagrams, transactions, indexing, and project references." },
+      "programming": { "title": "Programming", "desc": "Foundations in C++, Java, Python, problem solving, and coding practice." },
+      "webDevelopment": { "title": "Web Development", "desc": "HTML, CSS, JavaScript, React, APIs, deployment, and frontend projects." }
+    }
+  },
+  "workshops": {
+    "eyebrow": "Workshops & events",
+    "title": "A calendar for practical learning",
+    "desc": "Publish upcoming workshops, previous sessions, recordings, details, and registration links without needing a backend.",
+    "upcoming": "Upcoming",
+    "previous": "Previous",
+    "upcomingTitle": "Upcoming workshops",
+    "previousTitle": "Previous workshops",
+    "register": "Registration form",
+    "recording": "Watch recording",
+    "items": {
+      "reactBootcamp": { "title": "React Bootcamp", "desc": "Build a production-ready frontend with routing, components, state, and deployment.", "date": "June 12, 2026" },
+      "cyberNight": { "title": "Cybersecurity Night", "desc": "A beginner-friendly session on network security, Linux tools, and CTF practice.", "date": "June 19, 2026" },
+      "databaseClinic": { "title": "Database Clinic", "desc": "Hands-on revision for SQL queries, normalization, indexes, and ER modeling.", "date": "April 28, 2026" },
+      "aiIntro": { "title": "AI & Data Science Intro", "desc": "A practical entry point into Python notebooks, datasets, and machine learning basics.", "date": "March 30, 2026" }
+    }
+  },
+  "roadmaps": {
+    "eyebrow": "Career roadmaps",
+    "title": "Clear paths from beginner to project-ready",
+    "desc": "Guide students through technologies, practical milestones, and recommended external resources for each career direction.",
+    "items": {
+      "web": { "title": "Web Development", "desc": "Frontend fundamentals, React, APIs, accessibility, performance, and deployment." },
+      "cyber": { "title": "Cybersecurity", "desc": "Networking, Linux, security basics, labs, CTFs, and defensive/offensive tracks." },
+      "ai": { "title": "AI & Data Science", "desc": "Python, statistics, data analysis, machine learning, and model deployment." },
+      "devops": { "title": "DevOps", "desc": "Linux, Git, containers, CI/CD, cloud platforms, monitoring, and automation." },
+      "game": { "title": "Game Development", "desc": "Programming, engines, math, game loops, mechanics, testing, and publishing." }
+    }
+  },
+  "team": {
+    "eyebrow": "Team",
+    "title": "Students leading students",
+    "desc": "Showcase department leaders and working groups with responsive cards that are easy to update.",
+    "groups": {
+      "leader": "Department Leader",
+      "coLeaders": "Co-Leaders",
+      "academic": "Academic Team",
+      "technical": "Technical Team"
+    }
+  },
+  "community": {
+    "eyebrow": "Community",
+    "title": "More than files and links",
+    "desc": "The platform can highlight opportunities, competitions, internships, and student achievements as the community grows.",
+    "items": {
+      "opportunities": { "title": "Opportunities", "desc": "Scholarships, volunteering, open source, and campus programs." },
+      "competitions": { "title": "Competitions", "desc": "Hackathons, ICPC practice, CTF challenges, and innovation contests." },
+      "internships": { "title": "Internships", "desc": "Curated internship links, preparation resources, and application deadlines." },
+      "achievements": { "title": "Achievements", "desc": "Celebrate student projects, awards, publications, and team wins." }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact / Join us",
+    "title": "Connect with the department community",
+    "desc": "Use social links and Google Forms to gather join requests, workshop feedback, and volunteer applications.",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "track": "Interested track",
+      "academic": "Academic support",
+      "technical": "Technical team",
+      "events": "Events and workshops",
+      "message": "Message",
+      "submit": "Open Google Form"
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Common student questions",
+    "desc": "Keep the platform simple today while leaving room for future upgrades.",
+    "items": [
+      {
+        "question": "Does this website need a backend?",
+        "answer": "No. Phase 1 is fully frontend-only and links to tools like Google Drive, Notion, Forms, and recordings."
+      },
+      {
+        "question": "Can the team update content on GitHub?",
+        "answer": "Yes. Content is organized in reusable data and translation files so contributors can update cards, links, and copy safely."
+      },
+      {
+        "question": "Can this become a full platform later?",
+        "answer": "Yes. Firebase, Supabase, authentication, uploads, comments, and dashboards can be added in later phases."
+      }
+    ]
+  }
+}

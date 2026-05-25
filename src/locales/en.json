@@ -1,7 +1,11 @@
 {
   "brand": {
     "name": "CS Department Hub",
-    "tagline": "Learn. Build. Lead."
+    "tagline": "Learn. Build. Lead.",
+    "official": "Official team logo"
+  },
+  "common": {
+    "joinCommunity": "Join Community"
   },
   "nav": {
     "home": "Home",
@@ -147,6 +151,12 @@
       "message": "Message",
       "submit": "Open Google Form"
     }
+  },
+  "feedback": {
+    "eyebrow": "Ideas & feedback",
+    "title": "Share suggestions that improve the community",
+    "desc": "Students can submit workshop ideas, resource requests, event feedback, and improvement suggestions through one simple Google Form.",
+    "cta": "Submit an idea"
   },
   "faq": {
     "eyebrow": "FAQ",

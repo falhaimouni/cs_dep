@@ -1,7 +1,9 @@
-import { Menu, Moon, Search, Sun, X } from 'lucide-react';
+import { Menu, MessageCircle, Moon, Search, Sun, X } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+import BrandLogo from '../BrandLogo.jsx';
+import { links } from '../../config/links.js';
 import { useTheme } from '../../hooks/useTheme.js';
 
 const navItems = [
@@ -26,9 +28,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/60 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-ink-950/[0.82]">
       <nav className="page-shell flex h-20 items-center justify-between gap-4">
         <NavLink to="/" className="focus-ring flex items-center gap-3 rounded-lg" onClick={() => setOpen(false)}>
-          <span className="grid h-11 w-11 place-items-center rounded-lg bg-ink-900 text-sm font-black text-white shadow-glow dark:bg-brand-400 dark:text-ink-950">
-            CS
-          </span>
+          <BrandLogo />
           <span>
             <span className="block text-base font-extrabold leading-tight">{t('brand.name')}</span>
             <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">{t('brand.tagline')}</span>
@@ -63,6 +63,15 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          <a
+            href={links.whatsappCommunity}
+            target="_blank"
+            rel="noreferrer"
+            className="focus-ring hidden items-center gap-2 rounded-lg bg-mint-500 px-3 py-2 text-sm font-black text-ink-950 transition hover:bg-mint-400 sm:inline-flex"
+          >
+            <MessageCircle size={17} />
+            {t('common.joinCommunity')}
+          </a>
           <button
             type="button"
             onClick={switchLanguage}
@@ -104,6 +113,15 @@ export default function Navbar() {
                 {t(item.key)}
               </NavLink>
             ))}
+            <a
+              href={links.whatsappCommunity}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg bg-mint-500 px-4 py-3 text-sm font-black text-ink-950"
+            >
+              <MessageCircle size={17} />
+              {t('common.joinCommunity')}
+            </a>
           </div>
         </div>
       )}

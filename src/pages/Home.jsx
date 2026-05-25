@@ -2,10 +2,13 @@ import { ArrowRight, Play, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import BrandLogo from '../components/BrandLogo.jsx';
 import FAQ from '../components/FAQ.jsx';
+import FeedbackBar from '../components/FeedbackBar.jsx';
 import WorkshopCard from '../components/cards/WorkshopCard.jsx';
 import GlassCard from '../components/ui/GlassCard.jsx';
 import SectionHeader from '../components/ui/SectionHeader.jsx';
+import { links } from '../config/links.js';
 import { quickLinks, stats, workshops } from '../data/siteData.js';
 
 export default function Home() {
@@ -32,6 +35,9 @@ export default function Home() {
               <Play size={17} />
               {t('home.hero.secondary')}
             </Link>
+            <a href={links.whatsappCommunity} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-mint-500 px-5 py-3 text-sm font-black text-ink-950 transition hover:bg-mint-400">
+              {t('common.joinCommunity')}
+            </a>
           </div>
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {stats.map((stat) => (
@@ -44,6 +50,13 @@ export default function Home() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }} className="glass-panel rounded-lg p-4">
+          <div className="mb-4 flex items-center justify-between gap-4 rounded-lg border border-slate-200 bg-white/[0.65] p-4 dark:border-white/10 dark:bg-white/5">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">{t('brand.official')}</p>
+              <p className="mt-1 text-lg font-black">{t('brand.name')}</p>
+            </div>
+            <BrandLogo className="h-20 w-20" showGlow />
+          </div>
           <div className="rounded-lg bg-ink-950 p-5 text-slate-100 shadow-glow">
             <div className="mb-5 flex gap-2">
               <span className="h-3 w-3 rounded-full bg-coral-400" />
@@ -74,7 +87,7 @@ export default function Home() {
       <section className="page-shell py-12">
         <SectionHeader eyebrow={t('home.quick.eyebrow')} title={t('home.quick.title')} description={t('home.quick.desc')} />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {quickLinks.map((link, index) => {
+          {quickLinks.map((link) => {
             const Icon = link.icon;
             return (
               <a key={link.titleKey} href={link.href} className="glass-panel rounded-lg p-5 transition hover:-translate-y-1 hover:border-brand-300">
@@ -86,6 +99,8 @@ export default function Home() {
           })}
         </div>
       </section>
+
+      <FeedbackBar />
 
       <section className="page-shell py-12">
         <SectionHeader eyebrow={t('home.featured.eyebrow')} title={t('home.featured.title')} description={t('home.featured.desc')} />

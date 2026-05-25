@@ -2,6 +2,7 @@ import { Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import GlassCard from '../components/ui/GlassCard.jsx';
 import SectionHeader from '../components/ui/SectionHeader.jsx';
+import { links } from '../config/links.js';
 import { communityItems } from '../data/siteData.js';
 
 export default function Contact() {
@@ -30,8 +31,14 @@ export default function Contact() {
           <GlassCard>
             <SectionHeader eyebrow={t('contact.eyebrow')} title={t('contact.title')} description={t('contact.desc')} />
             <div className="mt-8 grid gap-3">
-              {['Discord', 'Telegram', 'GitHub', 'LinkedIn'].map((social) => (
-                <a key={social} href="#" className="rounded-lg border border-slate-200 bg-white/60 px-4 py-3 font-bold transition hover:border-brand-300 dark:border-white/10 dark:bg-white/5">
+              {[
+                ['WhatsApp Community', links.whatsappCommunity],
+                ['Discord', '#'],
+                ['Telegram', '#'],
+                ['GitHub', '#'],
+                ['LinkedIn', '#'],
+              ].map(([social, href]) => (
+                <a key={social} href={href} target={href === '#' ? undefined : '_blank'} rel={href === '#' ? undefined : 'noreferrer'} className="rounded-lg border border-slate-200 bg-white/60 px-4 py-3 font-bold transition hover:border-brand-300 dark:border-white/10 dark:bg-white/5">
                   {social}
                 </a>
               ))}
@@ -59,7 +66,7 @@ export default function Contact() {
                 {t('contact.form.message')}
                 <textarea rows="5" className="resize-none rounded-lg border border-slate-200 bg-white/80 px-4 py-3 outline-none focus:border-brand-400 dark:border-white/10 dark:bg-white/5" />
               </label>
-              <a href="https://forms.google.com" className="inline-flex items-center justify-center gap-2 rounded-lg bg-ink-900 px-5 py-3 text-sm font-black text-white transition hover:bg-brand-600 dark:bg-brand-400 dark:text-ink-950">
+              <a href={links.teamjoin} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-lg bg-ink-900 px-5 py-3 text-sm font-black text-white transition hover:bg-brand-600 dark:bg-brand-400 dark:text-ink-950">
                 <Send size={17} />
                 {t('contact.form.submit')}
               </a>

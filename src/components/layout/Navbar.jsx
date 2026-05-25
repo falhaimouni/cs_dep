@@ -28,7 +28,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/60 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-ink-950/[0.82]">
       <nav className="page-shell flex h-20 items-center justify-between gap-4">
         <NavLink to="/" className="focus-ring flex items-center gap-3 rounded-lg" onClick={() => setOpen(false)}>
-          <BrandLogo />
+          <BrandLogo className="h-20 w-20"/>
           <span>
             <span className="block text-base font-extrabold leading-tight">{t('brand.name')}</span>
             <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">{t('brand.tagline')}</span>

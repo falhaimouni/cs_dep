@@ -4,6 +4,7 @@ import GlassCard from '../components/ui/GlassCard.jsx';
 import SectionHeader from '../components/ui/SectionHeader.jsx';
 import { links } from '../config/links.js';
 import { communityItems } from '../data/siteData.js';
+import { link } from 'framer-motion/client';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -32,11 +33,10 @@ export default function Contact() {
             <SectionHeader eyebrow={t('contact.eyebrow')} title={t('contact.title')} description={t('contact.desc')} />
             <div className="mt-8 grid gap-3">
               {[
-                ['WhatsApp Community', links.whatsappCommunity],
-                ['Discord', '#'],
-                ['Telegram', '#'],
-                ['GitHub', '#'],
-                ['LinkedIn', '#'],
+                ['WhatsApp', links.whatsappCommunity],
+                ['Instagram' , links.instagrm],
+                ['GitHub', links.github],
+                ['LinkedIn', links.linkedin],
               ].map(([social, href]) => (
                 <a key={social} href={href} target={href === '#' ? undefined : '_blank'} rel={href === '#' ? undefined : 'noreferrer'} className="rounded-lg border border-slate-200 bg-white/60 px-4 py-3 font-bold transition hover:border-brand-300 dark:border-white/10 dark:bg-white/5">
                   {social}

@@ -52,7 +52,6 @@ export default function Home() {
         <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }} className="glass-panel rounded-lg p-4">
           <div className="mb-4 flex items-center justify-between gap-4 rounded-lg border border-slate-200 bg-white/[0.65] p-4 dark:border-white/10 dark:bg-white/5">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">{t('brand.official')}</p>
               <p className="mt-1 text-lg font-black">{t('brand.name')}</p>
             </div>
             <BrandLogo className="h-20 w-20" showGlow />

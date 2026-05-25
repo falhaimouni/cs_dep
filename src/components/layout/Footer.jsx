@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="border-t border-slate-200/80 bg-white/70 py-10 dark:border-white/10 dark:bg-ink-950/70">
       <div className="page-shell flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-4">
-          <BrandLogo className="h-14 w-14" />
+          <BrandLogo className="h-20 w-20"/>
           <div>
             <p className="text-lg font-extrabold">{t('brand.name')}</p>
             <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">{t('footer.copy')}</p>

@@ -1,3 +1,5 @@
+import logoImg from '../../assets/cs-zone-logo.png';
+
 export const links = {
   whatsappCommunity: 'https://chat.whatsapp.com/FFG2YiFaZFT2w76yYxsFlU',
   feedbackForm: 'https://forms.gle/A7Dr7Q17NERPssZq9',
@@ -5,5 +7,5 @@ export const links = {
 };
 
 export const assets = {
-  logo: '/assets/cs-zone-logo.png',
+  logo: logoImg,
 };

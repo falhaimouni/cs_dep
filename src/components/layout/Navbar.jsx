@@ -12,8 +12,6 @@ const navItems = [
   { to: '/resources', key: 'nav.resources' },
   { to: '/advisor', key: 'nav.advisor' },
   { to: '/courses', key: 'nav.courses' },
-  { to: '/planner', key: 'nav.planner' },
-  { to: '/projects', key: 'nav.projects' },
   { to: '/news', key: 'nav.news' },
   { to: '/team', key: 'nav.team' },
   { to: '/code-reviewer', key: 'nav.reviewer' },

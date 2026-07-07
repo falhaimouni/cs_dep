@@ -10,11 +10,9 @@ import Contact from './pages/Contact.jsx';
 import CourseRecommendations from './pages/CourseRecommendations.jsx';
 import DepartmentNews from './pages/DepartmentNews.jsx';
 import Home from './pages/Home.jsx';
-import ProjectGenerator from './pages/ProjectGenerator.jsx';
 import ResourceDetail from './pages/ResourceDetail.jsx';
 import Resources from './pages/Resources.jsx';
 import Roadmaps from './pages/Roadmaps.jsx';
-import StudyPlanner from './pages/StudyPlanner.jsx';
 import Team from './pages/Team.jsx';
 import Workshops from './pages/Workshops.jsx';
 
@@ -44,9 +42,7 @@ export default function App() {
           <Route path="/roadmaps" element={<Roadmaps />} />
           <Route path="/advisor" element={<AcademicAdvisor />} />
           <Route path="/courses" element={<CourseRecommendations />} />
-          <Route path="/planner" element={<StudyPlanner />} />
           <Route path="/code-reviewer" element={<CodeReviewer />} />
-          <Route path="/projects" element={<ProjectGenerator />} />
           <Route path="/news" element={<DepartmentNews />} />
           <Route path="/team" element={<Team />} />
           <Route path="/contact" element={<Contact />} />

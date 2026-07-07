@@ -1,14 +1,11 @@
-import majorsData from '../data/majors.json';
-import { apiOrFallback, apiRequest } from './apiClient.js';
+import { readJsonData } from '../dataStore.js';
 
 export async function getMajors() {
-  return apiOrFallback(
-    () => apiRequest('/majors'),
-    () => majorsData.majors
-  );
+  const data = await readJsonData('majors.json');
+  return data.majors;
 }
 
-export function getCourseCatalog(major) {
+function getCourseCatalog(major) {
   return major.semesters.flatMap((semester) =>
     semester.courses.map((course) => ({ ...course, semester: semester.label, sectionId: semester.id }))
   );
@@ -26,18 +23,9 @@ function getTargetCredits(completedCreditHours) {
   return 18;
 }
 
-export async function recommendCourses({ majorId, completedCourses = [], failedCourses = [], completedCreditHours = 0, maxCredits }) {
-  return apiOrFallback(
-    () => apiRequest('/advisor/recommend', {
-      method: 'POST',
-      body: JSON.stringify({ majorId, completedCourses, failedCourses, completedCreditHours, maxCredits }),
-    }),
-    () => recommendCoursesLocal({ majorId, completedCourses, failedCourses, completedCreditHours, maxCredits })
-  );
-}
-
-function recommendCoursesLocal({ majorId, completedCourses = [], failedCourses = [], completedCreditHours = 0, maxCredits }) {
-  const major = majorsData.majors.find((item) => item.id === majorId) ?? majorsData.majors[0];
+export async function recommendCourses({ majorId = 'cs', completedCourses = [], failedCourses = [], completedCreditHours = 0, maxCredits }) {
+  const majors = await getMajors();
+  const major = majors.find((item) => item.id === majorId) ?? majors[0];
   const failed = new Set(failedCourses);
   const completed = new Set(completedCourses.filter((code) => !failed.has(code)));
   const targetCredits = maxCredits ?? getTargetCredits(completedCreditHours);
@@ -49,11 +37,7 @@ function recommendCoursesLocal({ majorId, completedCourses = [], failedCourses =
       const missingPrerequisites = course.prerequisites
         .filter((code) => !completed.has(code))
         .map((code) => ({ code, name: getCourseName(catalog, code) }));
-      return {
-        ...course,
-        missingPrerequisites,
-        isAvailable: missingPrerequisites.length === 0,
-      };
+      return { ...course, missingPrerequisites, isAvailable: missingPrerequisites.length === 0 };
     });
 
   const priority = [

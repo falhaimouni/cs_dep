@@ -17,8 +17,6 @@
     "roadmaps": "Roadmaps",
     "advisor": "Advisor",
     "courses": "Courses",
-    "planner": "Planner",
-    "projects": "Projects",
     "news": "News",
     "reviewer": "Code Review",
     "team": "Team",
@@ -169,20 +167,9 @@
     "credits": "credits",
     "noPrereq": "No prerequisite"
   },
-  "planner": {
-    "eyebrow": "Study planner",
-    "title": "Generate a mock exam study plan",
-    "desc": "Enter a subject, exam date, and completed chapters to preview a daily schedule.",
-    "subject": "Subject",
-    "examDate": "Exam date",
-    "completed": "Chapters completed",
-    "generate": "Generate plan",
-    "progress": "Estimated progress"
-  },
   "reviewer": {
     "eyebrow": "Code reviewer",
     "title": "Mock AI-style code review interface",
-    "desc": "Paste code, choose a language, and preview suggestions without calling an AI API.",
     "editor": "Code editor",
     "review": "Review code",
     "copy": "Copy",
@@ -195,30 +182,27 @@
     "quality": "Overall code quality",
     "line": "Line",
     "fix": "Suggested fix",
+    "limitations": "Reviewer Status",
+    "detectedLanguage": "Detected language",
+    "analysisLevel": "Analysis level",
+    "noLimitations": "No reviewer limitations reported.",
     "none": "No issues found in this category.",
     "empty": "Run a review to see suggestions, warnings, and improvements."
-  },
-  "projects": {
-    "eyebrow": "Project generator",
-    "title": "Generate structured course project ideas",
-    "desc": "Select course, difficulty, and category to display a mock project brief.",
-    "course": "Course",
-    "difficulty": "Difficulty",
-    "category": "Category",
-    "generate": "Generate project",
-    "empty": "Choose options to generate a project",
-    "technologies": "Technologies",
-    "database": "Database",
-    "apis": "APIs",
-    "extra": "Extra features",
-    "steps": "Implementation steps"
   },
   "news": {
     "eyebrow": "Department news",
     "title": "Announcements, exams, workshops, and opportunities",
-    "desc": "A searchable timeline powered by local JSON and ready for a future announcements API.",
+    "department": "Department updates",
     "featured": "Featured update",
     "search": "Search news",
+    "university": {
+      "eyebrow": "Official source",
+      "title": "University News",
+      "desc": "Latest official news from Zarqa University, refreshed automatically from the university website.",
+      "updated": "Updated",
+      "error": "University news is temporarily unavailable. Please try again later.",
+      "noImage": "No image"
+    },
     "categories": {
       "all": "All",
       "announcements": "Announcements",

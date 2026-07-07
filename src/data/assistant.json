@@ -3,12 +3,10 @@
     "What courses should I register?",
     "Explain Data Structures.",
     "Show Operating Systems resources.",
-    "Create a study plan.",
-    "Give me project ideas.",
     "Review my code.",
     "What are this week's announcements?"
   ],
-  "quickActions": ["Advisor", "Resources", "Planner", "Projects"],
+  "quickActions": ["Advisor", "Resources", "Code Review", "News"],
   "responses": [
     {
       "match": ["courses", "register", "advisor"],
@@ -32,20 +30,6 @@
       }
     },
     {
-      "match": ["study plan", "plan", "exam"],
-      "answer": {
-        "en": "A good study plan breaks chapters into daily blocks, starts with weak topics, reserves review days, and tracks progress. The Study Planner page can generate a mocked schedule from your exam date.",
-        "ar": "الخطة الجيدة تقسم الفصول إلى مهام يومية، تبدأ بالموضوعات الضعيفة، تترك أيام مراجعة، وتتابع التقدم. صفحة مخطط الدراسة تنشئ جدولا تجريبيا حسب تاريخ الامتحان."
-      }
-    },
-    {
-      "match": ["project", "ideas"],
-      "answer": {
-        "en": "Good student projects solve a real workflow: resource organizer, exam planner, attendance dashboard, algorithm visualizer, CTF tracker, or course recommendation prototype.",
-        "ar": "المشاريع الجيدة تحل سير عمل حقيقي: منظم موارد، مخطط امتحانات، لوحة حضور، مصور خوارزميات، متتبع CTF، أو نموذج توصية مواد."
-      }
-    },
-    {
       "match": ["code", "review"],
       "answer": {
         "en": "Paste your code in the Code Reviewer page. The mock reviewer checks readability, naming, edge cases, accessibility, and possible refactoring opportunities.",
@@ -61,7 +45,7 @@
     }
   ],
   "fallback": {
-    "en": "I can help with course planning, resources, study schedules, project ideas, code review, and department announcements. Try one of the suggested prompts.",
-    "ar": "أستطيع مساعدتك في تخطيط المواد والموارد وجداول الدراسة وأفكار المشاريع ومراجعة الكود وإعلانات القسم. جرّب أحد الأسئلة المقترحة."
+    "en": "I can help with course planning, resources, code review, and department announcements. Try one of the suggested prompts.",
+    "ar": "أستطيع مساعدتك في تخطيط المواد والموارد ومراجعة الكود وإعلانات القسم. جرّب أحد الأسئلة المقترحة."
   }
 }

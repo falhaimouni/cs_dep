@@ -1,4 +1,4 @@
-import { AlertTriangle, Bug, Clipboard, Code2, Copy, Lightbulb, ShieldCheck } from 'lucide-react';
+import { AlertCircle, AlertTriangle, Bug, Clipboard, Code2, Copy, Lightbulb, ShieldCheck } from 'lucide-react';
 import { createElement } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -51,6 +51,13 @@ const toneClasses = {
   teal: 'border-teal-200 bg-teal-50/70 text-teal-700 dark:border-teal-900/60 dark:bg-teal-950/20 dark:text-teal-300',
 };
 
+const severityClasses = {
+  critical: 'bg-rose-700 text-white',
+  high: 'bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300',
+  medium: 'bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300',
+  low: 'bg-teal-100 text-teal-700 dark:bg-teal-950 dark:text-teal-300',
+};
+
 export default function CodeReviewer() {
   const { t } = useTranslation();
   const [language, setLanguage] = useState('JavaScript');
@@ -63,7 +70,7 @@ export default function CodeReviewer() {
 
   return (
     <section className="page-shell py-10 sm:py-12">
-      <SectionHeader eyebrow={t('reviewer.eyebrow')} title={t('reviewer.title')} description={t('reviewer.desc')} />
+      <SectionHeader eyebrow={t('reviewer.eyebrow')} title={t('reviewer.title')}/>
       <div className="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_520px]">
         <Panel animate={false} className="overflow-hidden">
           <div className="flex items-center justify-between border-b border-border px-4 py-3 dark:border-zinc-800">
@@ -116,15 +123,18 @@ export default function CodeReviewer() {
                             <p className="text-xs font-semibold">{index + 1}. {finding.title}</p>
                             <p className="mt-1 text-2xs opacity-80">{t('reviewer.line')} {finding.line}</p>
                           </div>
+                          <span className={`rounded-full px-2 py-1 text-2xs font-semibold ${severityClasses[finding.severity] ?? severityClasses.medium}`}>
+                            {finding.severity} · {finding.confidence ?? 70}%
+                          </span>
                         </div>
-                        {finding.snippet && (
-                          <pre className="mt-3 overflow-x-auto rounded bg-zinc-950 p-3 text-xs leading-5 text-zinc-100"><code>{finding.snippet}</code></pre>
+                        {(finding.codeSnippet || finding.snippet) && (
+                          <pre className="mt-3 overflow-x-auto rounded bg-zinc-950 p-3 text-xs leading-5 text-zinc-100"><code>{finding.codeSnippet || finding.snippet}</code></pre>
                         )}
                         <p className="mt-3 text-sm leading-6">{finding.explanation}</p>
-                        {finding.fix && (
+                        {(finding.suggestedImprovement || finding.fix) && (
                           <div className="mt-3">
                             <p className="text-2xs font-semibold uppercase tracking-wider opacity-75">{t('reviewer.fix')}</p>
-                            <pre className="mt-1 overflow-x-auto rounded bg-zinc-950 p-3 text-xs leading-5 text-zinc-100"><code>{finding.fix}</code></pre>
+                            <pre className="mt-1 overflow-x-auto rounded bg-zinc-950 p-3 text-xs leading-5 text-zinc-100"><code>{finding.suggestedImprovement || finding.fix}</code></pre>
                           </div>
                         )}
                       </article>
@@ -134,6 +144,41 @@ export default function CodeReviewer() {
                   </div>
                 </div>
               ))}
+
+              <div>
+                <h4 className="flex items-center gap-2 text-sm font-semibold text-ink dark:text-zinc-100">
+                  <AlertCircle size={16} />
+                  {t('reviewer.limitations')}
+                </h4>
+                {result.status && (
+                  <div className="mt-2 rounded-xl border border-border bg-surface-subtle p-3 text-sm text-ink-secondary dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
+                    <p><span className="font-semibold text-ink dark:text-zinc-100">{t('reviewer.detectedLanguage')}:</span> {result.status.detectedLanguage}</p>
+                    <p className="mt-1"><span className="font-semibold text-ink dark:text-zinc-100">{t('reviewer.analysisLevel')}:</span> {result.status.supportedAnalysisLevel}</p>
+                    {result.status.rulesExecuted?.length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {result.status.rulesExecuted.map((rule) => (
+                          <span key={rule} className="rounded-full bg-surface px-2 py-1 text-2xs font-medium text-ink-secondary ring-1 ring-border dark:bg-zinc-950 dark:text-zinc-300 dark:ring-zinc-800">{rule}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+                <div className="mt-2 space-y-2">
+                  {result.limitations?.length ? result.limitations.map((limitation) => (
+                    <div key={limitation.id} className="rounded-xl border border-sky-200 bg-sky-50/70 p-3 text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/20 dark:text-sky-300">
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="text-xs font-semibold">{limitation.title}</p>
+                        <span className={`rounded-full px-2 py-1 text-2xs font-semibold ${severityClasses[limitation.severity] ?? severityClasses.low}`}>
+                          {limitation.severity}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm leading-6">{limitation.explanation}</p>
+                    </div>
+                  )) : (
+                    <p className="rounded border border-border px-3 py-2 text-sm text-ink-secondary dark:border-zinc-800 dark:text-zinc-400">{t('reviewer.noLimitations')}</p>
+                  )}
+                </div>
+              </div>
             </div>
           ) : (
             <p className="mt-4 text-sm text-ink-secondary dark:text-zinc-400">{t('reviewer.empty')}</p>

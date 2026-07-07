@@ -1,7 +1,8 @@
-import { Bot, GripHorizontal, MessageSquare, Minimize2, RotateCcw, Send, Sparkles, X } from 'lucide-react';
+import { Bot, Code2, FolderOpen, GraduationCap, GripHorizontal, MessageSquare, Minimize2, Newspaper, RotateCcw, Send, Sparkles, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { getAssistantSetup, sendAssistantMessage } from '../services/aiAssistant.js';
 import { formatMockTime } from '../utils/localize.js';
 
@@ -12,23 +13,60 @@ const copy = {
     title: 'Student AI Assistant',
     subtitle: 'Frontend mock assistant',
     welcome: 'How can I help your semester today?',
-    placeholder: 'Ask about courses, resources, projects...',
+    placeholder: 'Ask about courses, resources, or announcements...',
     clear: 'Clear conversation',
     minimize: 'Minimize',
     close: 'Close assistant',
     typing: 'Assistant is typing',
+    online: 'AI connected',
+    local: 'Local assistant',
+    tools: 'Student tools',
   },
   ar: {
     title: 'مساعد الطالب الذكي',
     subtitle: 'نموذج واجهة تجريبي',
     welcome: 'كيف أساعدك في هذا الفصل؟',
-    placeholder: 'اسأل عن المواد أو الموارد أو المشاريع...',
+    placeholder: 'اسأل عن المواد أو الموارد أو الإعلانات...',
     clear: 'مسح المحادثة',
     minimize: 'تصغير',
     close: 'إغلاق المساعد',
     typing: 'المساعد يكتب',
+    online: 'متصل بالذكاء الاصطناعي',
+    local: 'مساعد محلي',
+    tools: 'أدوات الطالب',
   },
 };
+
+const toolCards = [
+  {
+    key: 'advisor',
+    icon: GraduationCap,
+    to: '/advisor',
+    prompt: { en: 'What courses should I register?', ar: 'ما المواد التي أستطيع تسجيلها؟' },
+    label: { en: 'Advisor', ar: 'المرشد' },
+  },
+  {
+    key: 'resources',
+    icon: FolderOpen,
+    to: '/resources',
+    prompt: { en: 'I need Operating Systems resources', ar: 'أريد مصادر نظم التشغيل' },
+    label: { en: 'Resources', ar: 'الموارد' },
+  },
+  {
+    key: 'reviewer',
+    icon: Code2,
+    to: '/code-reviewer',
+    prompt: { en: 'Review my code', ar: 'راجع الكود الخاص بي' },
+    label: { en: 'Code Review', ar: 'مراجعة الكود' },
+  },
+  {
+    key: 'news',
+    icon: Newspaper,
+    to: '/news',
+    prompt: { en: "What are this week's announcements?", ar: 'ما إعلانات هذا الأسبوع؟' },
+    label: { en: 'News', ar: 'الأخبار' },
+  },
+];
 
 export default function StudentAIAssistant() {
   const { i18n } = useTranslation();
@@ -133,7 +171,9 @@ export default function StudentAIAssistant() {
               </div>
               <div className="min-w-0 flex-1">
                 <h2 className="truncate text-sm font-semibold text-ink dark:text-zinc-50">{text.title}</h2>
-                <p className="truncate text-xs text-ink-secondary dark:text-zinc-400">{text.subtitle}</p>
+                <p className="truncate text-xs text-ink-secondary dark:text-zinc-400">
+                  {setup.aiEnabled ? text.online : text.local}
+                </p>
               </div>
               <button type="button" onClick={() => setIsMinimized(true)} className="icon-button" aria-label={text.minimize}>
                 <Minimize2 size={15} />
@@ -151,7 +191,31 @@ export default function StudentAIAssistant() {
                       ? 'rounded-ee-md bg-accent text-white'
                       : 'rounded-es-md border border-border bg-surface text-ink dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100'
                   }`}>
-                    <p>{message.content}</p>
+                    <p className="whitespace-pre-line">{message.content}</p>
+                    {message.actions?.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-1.5">
+                        {message.actions.map((item) => (
+                          item.to ? (
+                            <Link
+                              key={`${message.id}-${item.label}`}
+                              to={item.to}
+                              className="rounded-full border border-border bg-surface px-2.5 py-1 text-2xs font-medium text-ink-secondary transition hover:border-accent hover:text-accent dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-300"
+                            >
+                              {item.label}
+                            </Link>
+                          ) : (
+                            <button
+                              key={`${message.id}-${item.label}`}
+                              type="button"
+                              onClick={() => submitMessage(item.prompt)}
+                              className="rounded-full border border-border bg-surface px-2.5 py-1 text-2xs font-medium text-ink-secondary transition hover:border-accent hover:text-accent dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-300"
+                            >
+                              {item.label}
+                            </button>
+                          )
+                        ))}
+                      </div>
+                    )}
                     <p className={`mt-1 text-[10px] ${message.role === 'user' ? 'text-white/70' : 'text-ink-tertiary dark:text-zinc-500'}`}>
                       {formatMockTime(new Date(message.createdAt))}
                     </p>
@@ -170,6 +234,27 @@ export default function StudentAIAssistant() {
 
             {messages.length === 0 && (
               <div className="border-t border-border/70 px-4 py-3 dark:border-zinc-800">
+                <p className="mb-2 text-2xs font-semibold uppercase tracking-wider text-ink-tertiary dark:text-zinc-500">{text.tools}</p>
+                <div className="mb-3 grid grid-cols-2 gap-2">
+                  {toolCards.map((tool) => {
+                    const Icon = tool.icon;
+                    return (
+                      <div key={tool.key} className="rounded-xl border border-border bg-surface p-2 dark:border-zinc-800 dark:bg-zinc-900">
+                        <Link to={tool.to} className="flex items-center gap-2 text-xs font-medium text-ink dark:text-zinc-100">
+                          <Icon size={14} className="text-accent" />
+                          {isArabic ? tool.label.ar : tool.label.en}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => submitMessage(isArabic ? tool.prompt.ar : tool.prompt.en)}
+                          className="mt-1 text-left text-2xs text-ink-tertiary transition hover:text-accent dark:text-zinc-500"
+                        >
+                          {isArabic ? tool.prompt.ar : tool.prompt.en}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
                 <div className="flex gap-2 overflow-x-auto pb-1">
                   {setup.suggestions.map((suggestion) => (
                     <button key={suggestion} type="button" onClick={() => submitMessage(suggestion)} className="shrink-0 rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-ink-secondary transition hover:border-accent hover:text-accent dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">

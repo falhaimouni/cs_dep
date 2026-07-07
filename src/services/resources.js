@@ -1,9 +1,16 @@
 import resourcesData from '../data/resources.json';
+import { apiOrFallback, apiRequest } from './apiClient.js';
 
 export async function getResources() {
-  return resourcesData.courses;
+  return apiOrFallback(
+    () => apiRequest('/resources'),
+    () => resourcesData.courses
+  );
 }
 
 export async function getResourceById(id) {
-  return resourcesData.courses.find((course) => course.id === id);
+  return apiOrFallback(
+    () => apiRequest(`/resources/${encodeURIComponent(id)}`),
+    () => resourcesData.courses.find((course) => course.id === id)
+  );
 }

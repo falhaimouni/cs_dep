@@ -1,0 +1,8 @@
+{
+  "templates": [
+    { "type": "review", "title": { "en": "Review notes", "ar": "مراجعة الملاحظات" } },
+    { "type": "practice", "title": { "en": "Solve practice problems", "ar": "حل تمارين" } },
+    { "type": "summary", "title": { "en": "Create one-page summary", "ar": "إنشاء ملخص من صفحة واحدة" } },
+    { "type": "mock", "title": { "en": "Mock exam and corrections", "ar": "امتحان تجريبي وتصحيح" } }
+  ]
+}

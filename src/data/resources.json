@@ -1,0 +1,94 @@
+{
+  "courses": [
+    {
+      "id": "algorithms",
+      "code": "CS310",
+      "category": "core",
+      "title": { "en": "Algorithms", "ar": "الخوارزميات" },
+      "description": { "en": "Sorting, graphs, dynamic programming, complexity analysis, and practice problem sets.", "ar": "الفرز والرسوم والبرمجة الديناميكية وتحليل التعقيد وتمارين تطبيقية." },
+      "resources": {
+        "pdfs": ["Complexity summary", "Graph algorithms notes"],
+        "drive": "https://drive.google.com",
+        "notion": "https://notion.so",
+        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "slides": ["Sorting lecture", "Dynamic programming workshop"],
+        "practice": ["Big-O worksheet", "Shortest path problems", "DP practice set"]
+      }
+    },
+    {
+      "id": "data-structures",
+      "code": "CS210",
+      "category": "core",
+      "title": { "en": "Data Structures", "ar": "هياكل البيانات" },
+      "description": { "en": "Arrays, linked lists, stacks, queues, trees, heaps, hash tables, and implementations.", "ar": "المصفوفات والقوائم والمكدسات والطوابير والأشجار والأكوام وجداول التجزئة والتطبيق." },
+      "resources": {
+        "pdfs": ["Trees cheat sheet", "Hash tables guide"],
+        "drive": "https://drive.google.com",
+        "notion": "https://notion.so",
+        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "slides": ["Linked lists", "Trees and heaps"],
+        "practice": ["Stack exercises", "BST implementation", "Hash map mini lab"]
+      }
+    },
+    {
+      "id": "operating-systems",
+      "code": "CS320",
+      "category": "systems",
+      "title": { "en": "Operating Systems", "ar": "أنظمة التشغيل" },
+      "description": { "en": "Processes, threads, memory management, file systems, and synchronization resources.", "ar": "العمليات والخيوط وإدارة الذاكرة وأنظمة الملفات وموارد التزامن." },
+      "resources": {
+        "pdfs": ["Scheduling notes", "Memory management summary"],
+        "drive": "https://drive.google.com",
+        "notion": "https://notion.so",
+        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "slides": ["Processes and threads", "Synchronization"],
+        "practice": ["Semaphore problems", "Paging worksheet", "CPU scheduling cases"]
+      }
+    },
+    {
+      "id": "databases",
+      "code": "DB240",
+      "category": "core",
+      "title": { "en": "Databases", "ar": "قواعد البيانات" },
+      "description": { "en": "SQL, normalization, ER diagrams, transactions, indexing, and project references.", "ar": "SQL والتطبيع ومخططات ER والمعاملات والفهارس ومراجع المشاريع." },
+      "resources": {
+        "pdfs": ["SQL revision", "Normalization examples"],
+        "drive": "https://drive.google.com",
+        "notion": "https://notion.so",
+        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "slides": ["ER modeling", "Transactions"],
+        "practice": ["SQL query pack", "ER case study", "Indexing quiz"]
+      }
+    },
+    {
+      "id": "programming",
+      "code": "CS101",
+      "category": "foundations",
+      "title": { "en": "Programming", "ar": "البرمجة" },
+      "description": { "en": "Foundations in C++, Java, Python, problem solving, and coding practice.", "ar": "أساسيات C++ و Java و Python وحل المشكلات والتدريب البرمجي." },
+      "resources": {
+        "pdfs": ["Programming basics", "Debugging checklist"],
+        "drive": "https://drive.google.com",
+        "notion": "https://notion.so",
+        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "slides": ["Variables and loops", "Functions"],
+        "practice": ["Loops practice", "Functions lab", "Mini calculator project"]
+      }
+    },
+    {
+      "id": "web-development",
+      "code": "WEB250",
+      "category": "elective",
+      "title": { "en": "Web Development", "ar": "تطوير الويب" },
+      "description": { "en": "HTML, CSS, JavaScript, React, APIs, deployment, and frontend projects.", "ar": "HTML و CSS و JavaScript و React والواجهات البرمجية والنشر ومشاريع الواجهة." },
+      "resources": {
+        "pdfs": ["HTML semantics", "React state guide"],
+        "drive": "https://drive.google.com",
+        "notion": "https://notion.so",
+        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "slides": ["Responsive layout", "React components"],
+        "practice": ["Portfolio page", "API cards", "Accessibility checklist"]
+      }
+    }
+  ]
+}

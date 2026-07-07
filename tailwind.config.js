@@ -8,42 +8,35 @@ export default {
         sans: ['Inter', 'Tajawal', 'system-ui', 'sans-serif'],
       },
       colors: {
+        surface: {
+          DEFAULT: '#ffffff',
+          muted: '#fafafa',
+          subtle: '#f4f4f5',
+        },
+        border: {
+          DEFAULT: '#e4e4e7',
+          strong: '#d4d4d8',
+        },
+        accent: {
+          DEFAULT: '#0d9488',
+          hover: '#0f766e',
+          muted: '#ccfbf1',
+          foreground: '#ffffff',
+        },
         ink: {
-          950: '#09111f',
-          900: '#101827',
-          800: '#172033',
-          700: '#253149',
-        },
-        brand: {
-          50: '#ecfeff',
-          100: '#cffafe',
-          300: '#67e8f9',
-          400: '#22d3ee',
-          500: '#06b6d4',
-          600: '#0891b2',
-        },
-        mint: {
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-        },
-        coral: {
-          300: '#fda4af',
-          400: '#fb7185',
-        },
-        purple: {
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
+          DEFAULT: '#18181b',
+          secondary: '#52525b',
+          tertiary: '#a1a1aa',
         },
       },
-      boxShadow: {
-        glow: '0 24px 80px rgba(6, 182, 212, 0.24)',
+      borderRadius: {
+        DEFAULT: '6px',
       },
-      backgroundImage: {
-        grid:
-          'linear-gradient(rgba(8,145,178,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(8,145,178,.12) 1px, transparent 1px)',
+      transitionDuration: {
+        DEFAULT: '200ms',
+      },
+      fontSize: {
+        '2xs': ['0.6875rem', { lineHeight: '1rem' }],
       },
     },
   },

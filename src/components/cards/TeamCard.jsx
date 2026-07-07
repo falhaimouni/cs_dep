@@ -1,29 +1,31 @@
 import { Github, Linkedin } from 'lucide-react';
 
-export default function TeamCard({ name, role, index }) {
+export default function TeamCard({ name, role }) {
+  const initials = name
+    .split(' ')
+    .map((part) => part[0])
+    .join('');
+
   return (
-    <article className="glass-panel rounded-lg p-5">
-      <div className="flex items-center gap-4">
-        <div className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-brand-400 via-mint-300 to-coral-300 text-lg font-black text-ink-950">
-          {name
-            .split(' ')
-            .map((part) => part[0])
-            .join('')}
-        </div>
-        <div className="min-w-0">
-          <h3 className="truncate text-lg font-black">{name}</h3>
-          <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">{role}</p>
-        </div>
+    <article className="panel flex items-center gap-3 p-4">
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded border border-border bg-surface-muted text-xs font-medium text-ink-secondary dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
+        {initials}
       </div>
-      <div className="mt-5 flex items-center justify-between">
-        <span className="rounded-md bg-slate-900/5 px-2.5 py-1 text-xs font-black text-slate-600 dark:bg-white/10 dark:text-slate-300">#{String(index + 1).padStart(2, '0')}</span>
-        <div className="flex gap-2">
-          {[Github, Linkedin].map((Icon, iconIndex) => (
-            <a key={iconIndex} href="#" className="grid h-9 w-9 place-items-center rounded-lg border border-slate-200 bg-white/70 text-slate-600 transition hover:border-brand-300 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
-              <Icon size={16} />
-            </a>
-          ))}
-        </div>
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate text-sm font-semibold text-ink dark:text-zinc-100">{name}</h3>
+        <p className="truncate text-xs text-ink-secondary dark:text-zinc-400">{role}</p>
+      </div>
+      <div className="flex shrink-0 gap-1">
+        {[Github, Linkedin].map((Icon, iconIndex) => (
+          <a
+            key={iconIndex}
+            href="#"
+            className="focus-ring grid h-7 w-7 place-items-center rounded text-ink-tertiary transition-colors duration-200 hover:bg-surface-subtle hover:text-ink dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+            aria-label={Icon === Github ? 'GitHub' : 'LinkedIn'}
+          >
+            <Icon size={14} />
+          </a>
+        ))}
       </div>
     </article>
   );

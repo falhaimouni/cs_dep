@@ -1,6 +1,7 @@
 import { Calendar, Video } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import GlassCard from '../ui/GlassCard.jsx';
+import Badge from '../ui/Badge.jsx';
+import Panel from '../ui/Panel.jsx';
 
 export default function WorkshopCard({ item, delay = 0 }) {
   const { t } = useTranslation();
@@ -9,27 +10,28 @@ export default function WorkshopCard({ item, delay = 0 }) {
   const isUpcoming = item.status === 'upcoming';
 
   return (
-    <GlassCard delay={delay} className="h-full">
-      <div className="mb-5 flex items-center justify-between gap-4">
-        <div className="grid h-12 w-12 place-items-center rounded-lg bg-ink-900 text-white dark:bg-brand-400 dark:text-ink-950">
-          <Icon size={22} />
+    <Panel delay={delay} className="flex h-full flex-col">
+      <div className="mb-3 flex items-start justify-between gap-3">
+        <div className="grid h-8 w-8 place-items-center rounded border border-border bg-surface-muted text-ink-secondary dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
+          <Icon size={16} />
         </div>
-        <span className={`rounded-md px-3 py-1 text-xs font-black ${isUpcoming ? 'bg-mint-400/20 text-mint-500' : 'bg-brand-400/15 text-brand-600 dark:text-brand-300'}`}>
-          {t(`workshops.${item.status}`)}
-        </span>
+        <Badge variant={isUpcoming ? 'success' : 'muted'}>{t(`workshops.${item.status}`)}</Badge>
       </div>
-      <h3 className="text-xl font-black">{t(`${base}.title`)}</h3>
-      <p className="mt-2 leading-7 text-slate-600 dark:text-slate-300">{t(`${base}.desc`)}</p>
-      <div className="mt-5 grid gap-3 text-sm text-slate-600 dark:text-slate-300">
-        <div className="flex items-center gap-2">
-          <Calendar size={16} />
+      <h3 className="text-sm font-semibold text-ink dark:text-zinc-100">{t(`${base}.title`)}</h3>
+      <p className="mt-1.5 flex-1 text-sm leading-5 text-ink-secondary dark:text-zinc-400">{t(`${base}.desc`)}</p>
+      <div className="mt-4 space-y-2 border-t border-border pt-3 dark:border-zinc-800">
+        <div className="flex items-center gap-2 text-xs text-ink-secondary dark:text-zinc-400">
+          <Calendar size={13} />
           <span>{t(`${base}.date`)}</span>
         </div>
-        <a href="https://youtube.com" className="flex items-center gap-2 font-bold text-purple-600 dark:text-purple-400">
-          <Video size={16} />
+        <a
+          href="https://youtube.com"
+          className="focus-ring inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:text-accent-hover dark:text-teal-400 dark:hover:text-teal-300"
+        >
+          <Video size={13} />
           <span>{isUpcoming ? t('workshops.register') : t('workshops.recording')}</span>
         </a>
       </div>
-    </GlassCard>
+    </Panel>
   );
 }

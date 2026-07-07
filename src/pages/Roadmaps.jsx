@@ -7,11 +7,11 @@ export default function Roadmaps() {
   const { t } = useTranslation();
 
   return (
-    <section className="page-shell py-14">
+    <section className="page-shell py-10 sm:py-12">
       <SectionHeader eyebrow={t('roadmaps.eyebrow')} title={t('roadmaps.title')} description={t('roadmaps.desc')} />
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {roadmaps.map((item, index) => (
-          <RoadmapCard key={item.key} item={item} delay={index * 0.05} />
+          <RoadmapCard key={item.key} item={item} delay={index * 0.03} />
         ))}
       </div>
     </section>

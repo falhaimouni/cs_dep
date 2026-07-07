@@ -1,19 +1,40 @@
-import { Menu, MessageCircle, Moon, Search, Sun, X } from 'lucide-react';
+import { Menu, MessageCircle, Moon, Sun, X } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import BrandLogo from '../BrandLogo.jsx';
+import Button from '../ui/Button.jsx';
 import { links } from '../../config/links.js';
 import { useTheme } from '../../hooks/useTheme.js';
 
 const navItems = [
   { to: '/', key: 'nav.home' },
   { to: '/resources', key: 'nav.resources' },
-  { to: '/workshops', key: 'nav.workshops' },
-  { to: '/roadmaps', key: 'nav.roadmaps' },
+  { to: '/advisor', key: 'nav.advisor' },
+  { to: '/courses', key: 'nav.courses' },
+  { to: '/planner', key: 'nav.planner' },
+  { to: '/projects', key: 'nav.projects' },
+  { to: '/news', key: 'nav.news' },
   { to: '/team', key: 'nav.team' },
+  { to: '/code-reviewer', key: 'nav.reviewer' },
   { to: '/contact', key: 'nav.contact' },
 ];
+
+function NavItem({ item, onClick }) {
+  const { t } = useTranslation();
+
+  return (
+    <NavLink
+      to={item.to}
+      onClick={onClick}
+      className={({ isActive }) =>
+        `focus-ring nav-link ${isActive ? 'nav-link-active after:scale-x-100' : ''}`
+      }
+    >
+      {t(item.key)}
+    </NavLink>
+  );
+}
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -25,103 +46,91 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/60 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-ink-950/[0.82]">
-      <nav className="page-shell flex h-20 items-center justify-between gap-4">
-        <NavLink to="/" className="focus-ring flex items-center gap-3 rounded-lg" onClick={() => setOpen(false)}>
-          <BrandLogo className="h-20 w-20"/>
-          <span>
-            <span className="block text-base font-extrabold leading-tight">{t('brand.name')}</span>
-            <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">{t('brand.tagline')}</span>
+    <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-[8px] dark:border-zinc-800 dark:bg-[#09090b]/95">
+      <nav className="page-shell flex h-14 items-center justify-between gap-4">
+        <NavLink to="/" className="focus-ring flex items-center gap-2.5 rounded" onClick={() => setOpen(false)}>
+          <BrandLogo className="h-7 w-7" />
+          <span className="hidden sm:block">
+            <span className="block text-sm font-semibold leading-none text-ink dark:text-zinc-100">{t('brand.name')}</span>
+            <span className="mt-0.5 block text-2xs text-ink-tertiary dark:text-zinc-500">{t('brand.tagline')}</span>
           </span>
         </NavLink>
 
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex">
           {navItems.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              className={({ isActive }) =>
-                `focus-ring rounded-lg px-3 py-2 text-sm font-semibold transition ${
-                  isActive
-                    ? 'bg-ink-900 text-white dark:bg-white dark:text-ink-950'
-                    : 'text-slate-600 hover:bg-slate-900/5 hover:text-ink-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white'
-                }`
-              }
-            >
-              {t(item.key)}
-            </NavLink>
+            <NavItem key={item.to} item={item} />
           ))}
         </div>
 
-        <div className="hidden min-w-[210px] items-center gap-2 rounded-lg border border-slate-200 bg-white/70 px-3 py-2 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400 xl:flex">
-          <Search size={17} />
-          <input
-            aria-label={t('nav.search')}
-            placeholder={t('nav.search')}
-            className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400"
-          />
-        </div>
-
-        <div className="flex items-center gap-2">
-          <a
+        <div className="flex items-center gap-1.5">
+          <Button
+            as="a"
             href={links.whatsappCommunity}
             target="_blank"
             rel="noreferrer"
-            className="focus-ring hidden items-center gap-2 rounded-lg bg-purple-300 px-3 py-2 text-sm font-black text-ink-950 transition hover:bg-purple-400 sm:inline-flex"
+            variant="accent"
+            size="sm"
+            className="hidden sm:inline-flex"
           >
-            <MessageCircle size={17} />
+            <MessageCircle size={14} />
             {t('common.joinCommunity')}
-          </a>
+          </Button>
           <button
             type="button"
             onClick={switchLanguage}
-            className="focus-ring rounded-lg border border-slate-200 bg-white/75 px-3 py-2 text-sm font-bold text-ink-900 transition hover:border-brand-300 dark:border-white/10 dark:bg-white/5 dark:text-white"
+            className="focus-ring grid h-8 min-w-8 place-items-center rounded border border-border bg-surface px-2 text-2xs font-medium text-ink transition-colors duration-200 hover:bg-surface-subtle dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
           >
             {i18n.language?.startsWith('ar') ? 'EN' : 'AR'}
           </button>
           <button
             type="button"
             onClick={toggleTheme}
-            className="focus-ring grid h-10 w-10 place-items-center rounded-lg border border-slate-200 bg-white/75 text-ink-900 transition hover:border-brand-300 dark:border-white/10 dark:bg-white/5 dark:text-white"
+            className="focus-ring grid h-8 w-8 place-items-center rounded border border-border bg-surface text-ink-secondary transition-colors duration-200 hover:bg-surface-subtle dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800"
             aria-label={t('nav.theme')}
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
           </button>
           <button
             type="button"
-            className="focus-ring grid h-10 w-10 place-items-center rounded-lg border border-slate-200 bg-white/75 text-ink-900 dark:border-white/10 dark:bg-white/5 dark:text-white lg:hidden"
+            className="focus-ring grid h-8 w-8 place-items-center rounded border border-border bg-surface text-ink lg:hidden dark:border-zinc-700 dark:bg-zinc-900"
             onClick={() => setOpen((value) => !value)}
             aria-label={t('nav.menu')}
           >
-            {open ? <X size={20} /> : <Menu size={20} />}
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </nav>
 
       {open && (
-        <div className="page-shell pb-4 lg:hidden">
-          <div className="glass-panel grid gap-1 rounded-lg p-2">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `rounded-lg px-4 py-3 text-sm font-semibold ${isActive ? 'bg-ink-900 text-white dark:bg-white dark:text-ink-950' : 'text-slate-700 dark:text-slate-200'}`
-                }
+        <div className="divider lg:hidden">
+          <div className="page-shell py-2">
+            <div className="grid gap-0.5">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `focus-ring rounded px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                      isActive
+                        ? 'bg-surface-subtle text-ink dark:bg-zinc-800 dark:text-zinc-100'
+                        : 'text-ink-secondary hover:bg-surface-subtle dark:text-zinc-400 dark:hover:bg-zinc-800'
+                    }`
+                  }
+                >
+                  {t(item.key)}
+                </NavLink>
+              ))}
+              <a
+                href={links.whatsappCommunity}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-1 flex items-center justify-center gap-2 rounded bg-accent px-3 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-accent-hover"
               >
-                {t(item.key)}
-              </NavLink>
-            ))}
-            <a
-              href={links.whatsappCommunity}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg bg-purple-300 px-4 py-3 text-sm font-black text-ink-950"
-            >
-              <MessageCircle size={17} />
-              {t('common.joinCommunity')}
-            </a>
+                <MessageCircle size={15} />
+                {t('common.joinCommunity')}
+              </a>
+            </div>
           </div>
         </div>
       )}

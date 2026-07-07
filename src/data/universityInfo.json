@@ -1,0 +1,12 @@
+{
+  "brand": {
+    "name": { "en": "CS Department", "ar": "قسم علم الحاسوب" },
+    "tagline": { "en": "Learn. Build. Lead.", "ar": "تعلّم. ابنِ. قُد." }
+  },
+  "stats": [
+    { "value": "120+", "label": { "en": "organized files", "ar": "ملف منظم" } },
+    { "value": "35+", "label": { "en": "sessions hosted", "ar": "جلسة مستضافة" } },
+    { "value": "9", "label": { "en": "AI-ready tools", "ar": "أدوات جاهزة للذكاء الاصطناعي" } },
+    { "value": "24/7", "label": { "en": "student access", "ar": "وصول للطلاب" } }
+  ]
+}

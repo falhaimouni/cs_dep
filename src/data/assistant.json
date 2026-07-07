@@ -1,0 +1,67 @@
+{
+  "suggestions": [
+    "What courses should I register?",
+    "Explain Data Structures.",
+    "Show Operating Systems resources.",
+    "Create a study plan.",
+    "Give me project ideas.",
+    "Review my code.",
+    "What are this week's announcements?"
+  ],
+  "quickActions": ["Advisor", "Resources", "Planner", "Projects"],
+  "responses": [
+    {
+      "match": ["courses", "register", "advisor"],
+      "answer": {
+        "en": "To recommend courses correctly, I need your major, completed credit hours, and completed courses. The Academic Advisor uses the 132-hour CS prerequisite graph, recommends only courses whose prerequisites are satisfied, and warns about blocked courses with missing prerequisites.",
+        "ar": "حتى أقترح المواد بشكل صحيح أحتاج التخصص والساعات المكتملة والمواد التي أنهيتها. المرشد الأكاديمي يستخدم خطة علم الحاسوب 132 ساعة، ولا يقترح إلا المواد التي اكتملت متطلباتها، ويعرض المواد المحجوبة مع المتطلبات الناقصة."
+      }
+    },
+    {
+      "match": ["data structures", "structures"],
+      "answer": {
+        "en": "Data Structures is about choosing the right way to organize data: arrays for indexed access, linked lists for flexible insertion, trees for hierarchy, hash tables for fast lookup, and graphs for relationships.",
+        "ar": "هياكل البيانات تعني اختيار الطريقة المناسبة لتنظيم البيانات: المصفوفات للوصول بالفهرس، القوائم للإضافة المرنة، الأشجار للهرمية، الجداول hash للبحث السريع، والرسوم للعلاقات."
+      }
+    },
+    {
+      "match": ["operating", "os", "resources"],
+      "answer": {
+        "en": "Operating Systems resources usually include process scheduling, threads, memory management, file systems, synchronization, slides, labs, and past practice problems. Open Resources Explorer and choose Operating Systems.",
+        "ar": "موارد أنظمة التشغيل تشمل عادة جدولة العمليات والخيوط وإدارة الذاكرة وأنظمة الملفات والتزامن والشرائح والمختبرات وأسئلة تدريبية. افتح مستكشف الموارد واختر أنظمة التشغيل."
+      }
+    },
+    {
+      "match": ["study plan", "plan", "exam"],
+      "answer": {
+        "en": "A good study plan breaks chapters into daily blocks, starts with weak topics, reserves review days, and tracks progress. The Study Planner page can generate a mocked schedule from your exam date.",
+        "ar": "الخطة الجيدة تقسم الفصول إلى مهام يومية، تبدأ بالموضوعات الضعيفة، تترك أيام مراجعة، وتتابع التقدم. صفحة مخطط الدراسة تنشئ جدولا تجريبيا حسب تاريخ الامتحان."
+      }
+    },
+    {
+      "match": ["project", "ideas"],
+      "answer": {
+        "en": "Good student projects solve a real workflow: resource organizer, exam planner, attendance dashboard, algorithm visualizer, CTF tracker, or course recommendation prototype.",
+        "ar": "المشاريع الجيدة تحل سير عمل حقيقي: منظم موارد، مخطط امتحانات، لوحة حضور، مصور خوارزميات، متتبع CTF، أو نموذج توصية مواد."
+      }
+    },
+    {
+      "match": ["code", "review"],
+      "answer": {
+        "en": "Paste your code in the Code Reviewer page. The mock reviewer checks readability, naming, edge cases, accessibility, and possible refactoring opportunities.",
+        "ar": "الصق الكود في صفحة مراجعة الكود. المراجع التجريبي يفحص الوضوح والتسمية والحالات الطرفية وإمكانية الوصول وفرص إعادة التنظيم."
+      }
+    },
+    {
+      "match": ["announcements", "news", "week"],
+      "answer": {
+        "en": "This week: final exam schedule review, React lab registration, internship preparation resources, and CTF team practice registration.",
+        "ar": "هذا الأسبوع: مراجعة جدول الامتحانات النهائية، التسجيل لمختبر React، موارد التحضير للتدريب، والتسجيل لفريق تدريب CTF."
+      }
+    }
+  ],
+  "fallback": {
+    "en": "I can help with course planning, resources, study schedules, project ideas, code review, and department announcements. Try one of the suggested prompts.",
+    "ar": "أستطيع مساعدتك في تخطيط المواد والموارد وجداول الدراسة وأفكار المشاريع ومراجعة الكود وإعلانات القسم. جرّب أحد الأسئلة المقترحة."
+  }
+}

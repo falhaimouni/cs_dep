@@ -1,13 +1,20 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import CareerPathChatbot from './components/CareerPathChatbot.jsx';
+import StudentAIAssistant from './components/StudentAIAssistant.jsx';
 import Footer from './components/layout/Footer.jsx';
 import Navbar from './components/layout/Navbar.jsx';
+import AcademicAdvisor from './pages/AcademicAdvisor.jsx';
+import CodeReviewer from './pages/CodeReviewer.jsx';
 import Contact from './pages/Contact.jsx';
+import CourseRecommendations from './pages/CourseRecommendations.jsx';
+import DepartmentNews from './pages/DepartmentNews.jsx';
 import Home from './pages/Home.jsx';
+import ProjectGenerator from './pages/ProjectGenerator.jsx';
+import ResourceDetail from './pages/ResourceDetail.jsx';
 import Resources from './pages/Resources.jsx';
 import Roadmaps from './pages/Roadmaps.jsx';
+import StudyPlanner from './pages/StudyPlanner.jsx';
 import Team from './pages/Team.jsx';
 import Workshops from './pages/Workshops.jsx';
 
@@ -22,25 +29,30 @@ export default function App() {
   }, [isArabic]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-slate-50 text-ink-900 antialiased dark:bg-ink-950 dark:text-slate-100">
-      <div className="fixed inset-0 -z-10 bg-grid bg-[length:34px_34px]" />
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(74,222,128,.15),transparent_32%)]" />
+    <div className="flex min-h-screen flex-col bg-surface-muted text-ink antialiased dark:bg-[#09090b] dark:text-zinc-100">
       <Navbar />
-      <main>
+      <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/:id" element={<ResourceDetail />} />
           <Route path="/workshops" element={<Workshops />} />
           <Route path="/roadmaps" element={<Roadmaps />} />
+          <Route path="/advisor" element={<AcademicAdvisor />} />
+          <Route path="/courses" element={<CourseRecommendations />} />
+          <Route path="/planner" element={<StudyPlanner />} />
+          <Route path="/code-reviewer" element={<CodeReviewer />} />
+          <Route path="/projects" element={<ProjectGenerator />} />
+          <Route path="/news" element={<DepartmentNews />} />
           <Route path="/team" element={<Team />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-      <CareerPathChatbot />
+      <StudentAIAssistant />
       <Footer />
     </div>
   );

@@ -1,45 +1,45 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { Bot, Download, Map, MessageCircle, RefreshCcw, Send, Sparkles, X } from 'lucide-react';
+import { Compass, Download, Map, RefreshCcw, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import Button from './ui/Button.jsx';
+import Badge from './ui/Badge.jsx';
 import { analyzeCareerAnswers, getCareerQuestions } from '../data/careerChatbot.js';
 
-const MotionArticle = motion.article;
-const MotionButton = motion.button;
 const MotionDiv = motion.div;
 const MotionSection = motion.section;
 const MotionSpan = motion.span;
 
 const chatbotCopy = {
   en: {
-    intro: 'Hi! I will help you discover which tech field might fit your personality and interests 🚀',
-    typing: 'Assistant is typing',
-    complete: 'Great answers. I analyzed your interests, work style, and curiosity patterns. Here are your strongest career matches.',
-    open: 'Open career path chatbot',
-    close: 'Close career path chatbot',
-    title: 'AI Career Path Assistant',
-    subtitle: 'Career counselor for tech beginners',
-    launcherTitle: 'Career Chatbot',
-    launcherSubtitle: 'Find your tech path',
+    intro: 'Answer a few questions and we will suggest tech career paths that match your interests and work style.',
+    typing: 'Loading next question',
+    complete: 'Based on your answers, here are the career paths that align best with your profile.',
+    open: 'Open career path quiz',
+    close: 'Close career path quiz',
+    title: 'Career Path Finder',
+    subtitle: 'Discover your fit in tech',
+    launcherTitle: 'Career Finder',
+    launcherSubtitle: '8-question quiz',
     progress: 'Progress',
-    bestMatch: 'Best Match',
+    bestMatch: 'Top match',
     match: 'Match',
-    why: 'Why it matches:',
-    whyText: 'Your answers point toward',
+    why: 'Why it fits:',
+    whyText: 'Your answers suggest strengths in',
     technologies: 'Technologies',
-    plan: 'Plan',
-    viewRoadmap: 'View Roadmap',
-    exploreResources: 'Explore Resources',
-    exportRoadmap: 'Export Roadmap',
-    restartQuiz: 'Restart Quiz',
-    signals: 'Signals',
+    plan: 'Difficulty & timeline',
+    viewRoadmap: 'View full roadmap',
+    exploreResources: 'Browse resources',
+    exportRoadmap: 'Export plan',
+    restartQuiz: 'Start over',
+    signals: 'Profile signals',
     signalItems: ['Interests', 'Personality', 'Work style', 'Logic vs creativity', 'Hardware vs software', 'Building vs analyzing'],
-    howItWorks: 'How matching works',
-    howItWorksText: 'Each answer adds weighted points to realistic tech paths. Strong repeated patterns create stronger matches.',
-    savedResult: 'Saved Result',
-    stored: 'match stored locally',
-    exportTitle: 'IT Zone Career Match',
+    howItWorks: 'How scoring works',
+    howItWorksText: 'Each answer adds weighted points to career paths. Strong repeated patterns produce higher match scores.',
+    savedResult: 'Saved locally',
+    stored: 'match score',
+    exportTitle: 'CS Department Career Match',
     difficulty: 'Difficulty',
     learningTime: 'Estimated learning time',
     beginnerRoadmap: 'Beginner roadmap',
@@ -49,40 +49,40 @@ const chatbotCopy = {
     nextSteps: ['Build one beginner project', 'Share it on GitHub', 'Ask for feedback', 'Repeat with a slightly harder project'],
   },
   ar: {
-    intro: 'أهلا! سأساعدك على اكتشاف المجال التقني الأقرب لشخصيتك واهتماماتك 🚀',
-    typing: 'المساعد يكتب',
-    complete: 'إجابات رائعة. حللت اهتماماتك وطريقة عملك وفضولك التقني، وهذه أقوى المسارات المناسبة لك.',
-    open: 'فتح مساعد اختيار المسار التقني',
-    close: 'إغلاق مساعد اختيار المسار التقني',
-    title: 'مساعد اختيار المسار بالذكاء الاصطناعي',
-    subtitle: 'مرشد مهني للمبتدئين في التقنية',
-    launcherTitle: 'شات بوت المسار',
-    launcherSubtitle: 'اكتشف مجالك التقني',
+    intro: 'أجب على بعض الأسئلة وسنقترح مسارات تقنية تناسب اهتماماتك وأسلوب عملك.',
+    typing: 'جاري تحميل السؤال التالي',
+    complete: 'بناءً على إجاباتك، هذه المسارات الأقرب لملفك.',
+    open: 'فتح اختبار المسار المهني',
+    close: 'إغلاق اختبار المسار المهني',
+    title: 'اكتشاف المسار المهني',
+    subtitle: 'اعرف مجالك في التقنية',
+    launcherTitle: 'اكتشاف المسار',
+    launcherSubtitle: 'اختبار من 8 أسئلة',
     progress: 'التقدم',
     bestMatch: 'أفضل تطابق',
     match: 'تطابق',
     why: 'لماذا يناسبك:',
-    whyText: 'إجاباتك تشير إلى',
+    whyText: 'إجاباتك تشير إلى نقاط قوة في',
     technologies: 'التقنيات',
-    plan: 'الخطة',
-    viewRoadmap: 'عرض المسار',
-    exploreResources: 'استكشاف الموارد',
+    plan: 'الصعوبة والمدة',
+    viewRoadmap: 'عرض الخطة الكاملة',
+    exploreResources: 'تصفح الموارد',
     exportRoadmap: 'تصدير الخطة',
-    restartQuiz: 'إعادة الاختبار',
-    signals: 'المؤشرات',
+    restartQuiz: 'البدء من جديد',
+    signals: 'مؤشرات الملف',
     signalItems: ['الاهتمامات', 'الشخصية', 'أسلوب العمل', 'المنطق مقابل الإبداع', 'العتاد مقابل البرمجيات', 'البناء مقابل التحليل'],
-    howItWorks: 'كيف يتم التحليل',
-    howItWorksText: 'كل إجابة تضيف نقاطا موزونة لمسارات تقنية واقعية. تكرار الأنماط القوية يعطي نتائج أدق.',
-    savedResult: 'النتيجة المحفوظة',
-    stored: 'تطابق محفوظ محليا',
-    exportTitle: 'نتيجة مسارك في IT Zone',
+    howItWorks: 'كيف يعمل التقييم',
+    howItWorksText: 'كل إجابة تضيف نقاطاً موزونة لمسارات مهنية. تكرار الأنماط يعطي درجات تطابق أعلى.',
+    savedResult: 'محفوظ محلياً',
+    stored: 'درجة التطابق',
+    exportTitle: 'نتيجة مسارك — CS Department',
     difficulty: 'مستوى الصعوبة',
     learningTime: 'مدة التعلم المتوقعة',
     beginnerRoadmap: 'خطة البداية',
     roadmapFor: 'خطة مسار',
     requiredSkills: 'المهارات المطلوبة',
     suggestedNextSteps: 'الخطوات المقترحة',
-    nextSteps: ['ابنِ مشروعا بسيطا كبداية', 'ارفعه على GitHub', 'اطلب ملاحظات عليه', 'كرر التجربة بمشروع أصعب قليلا'],
+    nextSteps: ['ابنِ مشروعاً بسيطاً', 'ارفعه على GitHub', 'اطلب ملاحظات', 'كرر بمشروع أصعب قليلاً'],
   },
 };
 
@@ -92,9 +92,9 @@ function TypingDots({ label }) {
       {[0, 1, 2].map((dot) => (
         <MotionSpan
           key={dot}
-          className="h-2 w-2 rounded-full bg-brand-400"
-          animate={{ opacity: [0.35, 1, 0.35], y: [0, -3, 0] }}
-          transition={{ duration: 0.9, delay: dot * 0.12, repeat: Infinity }}
+          className="h-1.5 w-1.5 rounded-full bg-ink-tertiary dark:bg-zinc-500"
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ duration: 0.8, delay: dot * 0.15, repeat: Infinity }}
         />
       ))}
     </div>
@@ -106,15 +106,16 @@ function ChatBubble({ message, isArabic }) {
 
   return (
     <MotionDiv
-      initial={{ opacity: 0, y: 12, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
       className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       <div
-        className={`max-w-[86%] rounded-lg px-4 py-3 text-sm leading-6 shadow-sm ${isArabic ? 'text-right' : 'text-left'} ${
+        className={`max-w-[85%] rounded px-3 py-2 text-sm leading-5 ${isArabic ? 'text-right' : 'text-left'} ${
           isUser
-            ? 'bg-ink-900 text-white dark:bg-brand-400 dark:text-ink-950'
-            : 'border border-slate-200 bg-white text-slate-700 dark:border-white/10 dark:bg-white/[0.08] dark:text-slate-100'
+            ? 'bg-ink text-white dark:bg-zinc-100 dark:text-zinc-900'
+            : 'border border-border bg-surface text-ink-secondary dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300'
         }`}
       >
         {message.text}
@@ -124,61 +125,33 @@ function ChatBubble({ message, isArabic }) {
 }
 
 function RecommendationCard({ result, rank, copy, isArabic }) {
-  const accent = rank === 0 ? 'border-brand-300 bg-brand-400/10' : 'border-slate-200 bg-white/80 dark:border-white/10 dark:bg-white/[0.06]';
-
   return (
-    <MotionArticle
-      initial={{ opacity: 0, y: 18 }}
+    <MotionDiv
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: rank * 0.08 }}
-      className={`rounded-lg border p-4 ${accent}`}
+      transition={{ duration: 0.2, delay: rank * 0.05 }}
+      className={`rounded border p-4 ${rank === 0 ? 'border-accent/40 bg-accent-muted/30 dark:border-accent/30 dark:bg-accent/5' : 'border-border dark:border-zinc-800'}`}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">
-            {rank === 0 ? copy.bestMatch : `${copy.match} ${rank + 1}`}
-          </p>
-          <h3 className="mt-1 text-xl font-black text-ink-950 dark:text-white">{result.name}</h3>
+          <p className="text-label">{rank === 0 ? copy.bestMatch : `${copy.match} ${rank + 1}`}</p>
+          <h3 className="mt-0.5 text-sm font-semibold text-ink dark:text-zinc-100">{result.name}</h3>
         </div>
-        <div className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-ink-900 text-sm font-black text-white dark:bg-brand-400 dark:text-ink-950">
-          {result.match}%
-        </div>
+        <span className="text-lg font-semibold tabular-nums text-accent dark:text-teal-400">{result.match}%</span>
       </div>
 
-      <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{result.description}</p>
-      <p className="mt-3 text-sm leading-6 text-slate-700 dark:text-slate-200">
-        <span className="font-black">{copy.why}</span> {copy.whyText} {result.skills.slice(0, 3).join(isArabic ? '، ' : ', ').toLowerCase()}.
+      <p className="mt-2 text-sm leading-5 text-ink-secondary dark:text-zinc-400">{result.description}</p>
+      <p className="mt-2 text-xs leading-5 text-ink-secondary dark:text-zinc-400">
+        <span className="font-medium text-ink dark:text-zinc-300">{copy.why}</span>{' '}
+        {copy.whyText} {result.skills.slice(0, 3).join(isArabic ? '، ' : ', ').toLowerCase()}.
       </p>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{copy.technologies}</p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {result.technologies.map((tech) => (
-              <span key={tech} className="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-100">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{copy.plan}</p>
-          <p className="mt-2 text-sm font-bold text-ink-900 dark:text-white">{result.difficulty}</p>
-          <p className="text-sm text-slate-500 dark:text-slate-400">{result.learningTime}</p>
-        </div>
-      </div>
-
-      <ol className="mt-4 space-y-2">
-        {result.roadmap.map((step, index) => (
-          <li key={step} className="flex gap-2 text-sm text-slate-600 dark:text-slate-300">
-            <span className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-400/15 text-xs font-black text-brand-700 dark:text-brand-200">
-              {index + 1}
-            </span>
-            <span>{step}</span>
-          </li>
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        {result.technologies.slice(0, 4).map((tech) => (
+          <Badge key={tech}>{tech}</Badge>
         ))}
-      </ol>
-    </MotionArticle>
+      </div>
+    </MotionDiv>
   );
 }
 
@@ -186,54 +159,52 @@ function RoadmapDetail({ result, copy }) {
   if (!result) return null;
 
   return (
-    <MotionArticle
-      initial={{ opacity: 0, y: 18 }}
+    <MotionDiv
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-lg border border-brand-300 bg-white p-4 shadow-glow dark:bg-white/[0.07]"
+      transition={{ duration: 0.2 }}
+      className="rounded border border-border p-4 dark:border-zinc-800"
     >
-      <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">{copy.roadmapFor}</p>
-      <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
+      <p className="text-label">{copy.roadmapFor}</p>
+      <div className="mt-1 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h3 className="text-2xl font-black text-ink-950 dark:text-white">{result.name}</h3>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">{result.description}</p>
+          <h3 className="text-base font-semibold text-ink dark:text-zinc-100">{result.name}</h3>
+          <p className="mt-1 max-w-xl text-sm leading-5 text-ink-secondary dark:text-zinc-400">{result.description}</p>
         </div>
-        <div className="rounded-lg bg-ink-900 px-4 py-3 text-center text-white dark:bg-brand-400 dark:text-ink-950">
-          <p className="text-2xl font-black">{result.match}%</p>
-          <p className="text-xs font-black uppercase tracking-[0.14em]">{copy.match}</p>
-        </div>
+        <Badge variant="accent">{result.match}% {copy.match}</Badge>
       </div>
 
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-ink-900/60">
-          <p className="text-sm font-black text-ink-950 dark:text-white">{copy.beginnerRoadmap}</p>
-          <ol className="mt-3 space-y-3">
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <div className="rounded border border-border p-3 dark:border-zinc-800">
+          <p className="text-xs font-medium text-ink dark:text-zinc-100">{copy.beginnerRoadmap}</p>
+          <ol className="mt-2 space-y-2">
             {result.roadmap.map((step, index) => (
-              <li key={step} className="flex gap-3 text-sm leading-6 text-slate-700 dark:text-slate-200">
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-brand-400 text-xs font-black text-ink-950">{index + 1}</span>
+              <li key={step} className="flex gap-2 text-sm text-ink-secondary dark:text-zinc-400">
+                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded border border-border text-2xs font-medium dark:border-zinc-700">
+                  {index + 1}
+                </span>
                 <span>{step}</span>
               </li>
             ))}
           </ol>
         </div>
 
-        <div className="space-y-4">
-          <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-ink-900/60">
-            <p className="text-sm font-black text-ink-950 dark:text-white">{copy.requiredSkills}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
+        <div className="space-y-3">
+          <div className="rounded border border-border p-3 dark:border-zinc-800">
+            <p className="text-xs font-medium text-ink dark:text-zinc-100">{copy.requiredSkills}</p>
+            <div className="mt-2 flex flex-wrap gap-1.5">
               {result.skills.map((skill) => (
-                <span key={skill} className="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-100">
-                  {skill}
-                </span>
+                <Badge key={skill}>{skill}</Badge>
               ))}
             </div>
           </div>
 
-          <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-ink-900/60">
-            <p className="text-sm font-black text-ink-950 dark:text-white">{copy.suggestedNextSteps}</p>
-            <ul className="mt-3 space-y-2">
+          <div className="rounded border border-border p-3 dark:border-zinc-800">
+            <p className="text-xs font-medium text-ink dark:text-zinc-100">{copy.suggestedNextSteps}</p>
+            <ul className="mt-2 space-y-1.5">
               {copy.nextSteps.map((step) => (
-                <li key={step} className="flex gap-2 text-sm leading-6 text-slate-700 dark:text-slate-200">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-400" />
+                <li key={step} className="flex gap-2 text-sm text-ink-secondary dark:text-zinc-400">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink-tertiary dark:bg-zinc-500" />
                   <span>{step}</span>
                 </li>
               ))}
@@ -241,18 +212,7 @@ function RoadmapDetail({ result, copy }) {
           </div>
         </div>
       </div>
-
-      <div className="mt-4">
-        <p className="text-sm font-black text-ink-950 dark:text-white">{copy.technologies}</p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {result.technologies.map((tech) => (
-            <span key={tech} className="rounded-md bg-ink-900 px-2.5 py-1 text-xs font-bold text-white dark:bg-brand-400 dark:text-ink-950">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </MotionArticle>
+    </MotionDiv>
   );
 }
 
@@ -293,7 +253,7 @@ export default function CareerPathChatbot() {
 
     const timer = window.setTimeout(() => {
       setMessages((current) => [...current, { from: 'bot', text: currentQuestion.text }]);
-    }, 550);
+    }, 400);
 
     return () => window.clearTimeout(timer);
   }, [currentQuestion, isOpen, messages.length]);
@@ -301,7 +261,7 @@ export default function CareerPathChatbot() {
   useEffect(() => {
     if (!isComplete || !results[0]) return;
     window.localStorage.setItem(
-      'it-zone-career-result',
+      'cs-dep-career-result',
       JSON.stringify({
         createdAt: new Date().toISOString(),
         topMatch: results[0].name,
@@ -330,7 +290,7 @@ export default function CareerPathChatbot() {
         setSelectedRoadmap(null);
       }
       setIsTyping(false);
-    }, 720);
+    }, 500);
   }
 
   function restartQuiz() {
@@ -374,102 +334,82 @@ export default function CareerPathChatbot() {
 
   return (
     <>
-      <MotionButton
+      <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className={`focus-ring fixed bottom-5 z-40 flex max-w-[calc(100vw-2.5rem)] items-center gap-3 rounded-lg border border-brand-300 bg-white/95 px-3 py-3 text-ink-950 shadow-glow backdrop-blur-xl transition hover:-translate-y-1 hover:border-purple-300 hover:bg-purple-50 dark:border-brand-400/40 dark:bg-ink-900/95 dark:text-white dark:hover:bg-ink-800 ${isArabic ? 'left-5' : 'right-5'}`}
+        className={`focus-ring fixed bottom-4 z-40 flex items-center gap-2.5 rounded border border-border bg-surface px-3 py-2 shadow-sm transition-colors duration-200 hover:border-border-strong hover:bg-surface-subtle dark:border-zinc-700 dark:bg-zinc-950 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 ${isArabic ? 'left-4' : 'right-4'}`}
         aria-label={copy.open}
-        whileTap={{ scale: 0.96 }}
       >
-        <span className="relative grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-ink-900 text-brand-300 dark:bg-brand-400 dark:text-ink-950">
-          <MotionSpan
-            className="absolute inset-0 rounded-lg border border-brand-300"
-            animate={{ opacity: [0.75, 0], scale: [1, 1.35] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
-          />
-          <span className="absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-purple-400 dark:border-ink-900" />
-          <span className="absolute inset-0 rounded-lg bg-brand-400/25" />
-          <MessageCircle className="relative" size={24} />
+        <span className="grid h-8 w-8 place-items-center rounded border border-border bg-surface-muted text-accent dark:border-zinc-700 dark:bg-zinc-900 dark:text-teal-400">
+          <Compass size={16} />
         </span>
-        <span className={`min-w-0 ${isArabic ? 'text-right' : 'text-left'}`}>
-          <span className="flex items-center gap-1.5 text-sm font-black">
-            <Sparkles size={15} className="text-purple-500" />
-            <span>{copy.launcherTitle}</span>
-          </span>
-          <span className="mt-0.5 block truncate text-xs font-bold text-slate-500 dark:text-slate-300">{copy.launcherSubtitle}</span>
+        <span className={`hidden min-w-0 sm:block ${isArabic ? 'text-right' : 'text-left'}`}>
+          <span className="block text-sm font-medium text-ink dark:text-zinc-100">{copy.launcherTitle}</span>
+          <span className="block text-2xs text-ink-tertiary dark:text-zinc-500">{copy.launcherSubtitle}</span>
         </span>
-      </MotionButton>
+      </button>
 
       <AnimatePresence>
         {isOpen && (
           <MotionDiv
-            className="fixed inset-0 z-50 flex items-end justify-center bg-ink-950/55 p-3 backdrop-blur-sm sm:items-center sm:p-5"
+            className="fixed inset-0 z-50 flex items-end justify-center bg-zinc-900/40 p-3 sm:items-center sm:p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
             <MotionSection
-              initial={{ opacity: 0, y: 28, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 18, scale: 0.98 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 230 }}
-              className={`flex h-[min(760px,92vh)] w-full max-w-5xl flex-col overflow-hidden rounded-lg border border-white/20 bg-slate-50 shadow-2xl dark:bg-ink-950 ${isArabic ? 'text-right' : 'text-left'}`}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.2 }}
+              className={`flex h-[min(680px,92vh)] w-full max-w-4xl flex-col overflow-hidden rounded border border-border bg-surface-muted dark:border-zinc-800 dark:bg-zinc-950 ${isArabic ? 'text-right' : 'text-left'}`}
               dir={isArabic ? 'rtl' : 'ltr'}
               role="dialog"
               aria-modal="true"
               aria-label={copy.open}
             >
-              <header className="border-b border-slate-200 bg-white/85 px-4 py-4 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.06] sm:px-5">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex min-w-0 items-center gap-3">
-                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-ink-900 text-brand-300 dark:bg-brand-400 dark:text-ink-950">
-                      <Bot size={22} />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <h2 className="truncate text-lg font-black text-ink-950 dark:text-white">{copy.title}</h2>
-                        <Sparkles className="hidden text-brand-500 sm:block" size={16} />
-                      </div>
-                      <p className="truncate text-sm text-slate-500 dark:text-slate-400">{copy.subtitle}</p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsOpen(false)}
-                    className="focus-ring grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-700 transition hover:border-brand-300 dark:border-white/10 dark:bg-white/5 dark:text-slate-100"
-                    aria-label={copy.close}
-                  >
-                    <X size={19} />
-                  </button>
+              <header className="flex items-center justify-between gap-3 border-b border-border px-4 py-3 dark:border-zinc-800">
+                <div className="min-w-0">
+                  <h2 className="truncate text-sm font-semibold text-ink dark:text-zinc-100">{copy.title}</h2>
+                  <p className="truncate text-xs text-ink-secondary dark:text-zinc-400">{copy.subtitle}</p>
                 </div>
-
-                <div className="mt-4">
-                  <div className="mb-2 flex items-center justify-between text-xs font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-                    <span>{copy.progress}</span>
-                    <span>{progress}%</span>
-                  </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-white/10">
-                    <MotionDiv className="h-full rounded-full bg-brand-400" animate={{ width: `${progress}%` }} transition={{ duration: 0.35 }} />
-                  </div>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="focus-ring grid h-8 w-8 shrink-0 place-items-center rounded border border-border text-ink-secondary transition-colors duration-200 hover:bg-surface-subtle dark:border-zinc-700 dark:hover:bg-zinc-800"
+                  aria-label={copy.close}
+                >
+                  <X size={16} />
+                </button>
               </header>
 
-              <div className="grid min-h-0 flex-1 lg:grid-cols-[1fr_380px]">
+              <div className="border-b border-border px-4 py-2 dark:border-zinc-800">
+                <div className="mb-1 flex items-center justify-between text-2xs text-ink-tertiary dark:text-zinc-500">
+                  <span>{copy.progress}</span>
+                  <span className="tabular-nums">{progress}%</span>
+                </div>
+                <div className="h-1 overflow-hidden rounded-full bg-surface-subtle dark:bg-zinc-800">
+                  <MotionDiv className="h-full rounded-full bg-accent" animate={{ width: `${progress}%` }} transition={{ duration: 0.2 }} />
+                </div>
+              </div>
+
+              <div className="grid min-h-0 flex-1 lg:grid-cols-[1fr_240px]">
                 <div className="flex min-h-0 flex-col">
-                  <div ref={scrollRef} className="min-h-0 flex-1 space-y-4 overflow-y-auto px-4 py-5 sm:px-5">
+                  <div ref={scrollRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4">
                     {messages.map((message, index) => (
                       <ChatBubble key={`${message.from}-${message.text}-${index}`} message={message} isArabic={isArabic} />
                     ))}
                     {isTyping && (
                       <div className="flex justify-start">
-                        <div className="rounded-lg border border-slate-200 bg-white px-4 dark:border-white/10 dark:bg-white/[0.08]">
+                        <div className="rounded border border-border bg-surface px-3 dark:border-zinc-700 dark:bg-zinc-900">
                           <TypingDots label={copy.typing} />
                         </div>
                       </div>
                     )}
 
                     {isComplete && (
-                      <div className="space-y-4 pt-2">
+                      <div className="space-y-3 pt-1">
                         {results.map((result, index) => (
                           <RecommendationCard key={result.key} result={result} rank={index} copy={copy} isArabic={isArabic} />
                         ))}
@@ -478,86 +418,66 @@ export default function CareerPathChatbot() {
                     )}
                   </div>
 
-                  <footer className="border-t border-slate-200 bg-white/80 p-4 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.04]">
+                  <footer className="border-t border-border p-3 dark:border-zinc-800">
                     {!isComplete ? (
-                      <div className="grid gap-2 sm:grid-cols-2">
+                      <div className="grid gap-1.5 sm:grid-cols-2">
                         {currentQuestion?.options.map((option) => (
                           <button
                             key={option.label}
                             type="button"
                             disabled={isTyping}
                             onClick={() => answerQuestion(option)}
-                            className={`focus-ring flex min-h-12 items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-ink-900 transition hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-55 dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:hover:bg-white/[0.1] ${isArabic ? 'text-right' : 'text-left'}`}
+                            className={`focus-ring rounded border border-border bg-surface px-3 py-2.5 text-sm text-ink transition-colors duration-200 hover:border-accent/40 hover:bg-surface-subtle disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-accent/30 dark:hover:bg-zinc-800 ${isArabic ? 'text-right' : 'text-left'}`}
                           >
-                            <span>{option.label}</span>
-                            <Send size={16} className="shrink-0 text-brand-500" />
+                            {option.label}
                           </button>
                         ))}
                       </div>
                     ) : (
                       <div className="flex flex-wrap gap-2">
-                        <button
-                          type="button"
-                          onClick={showRoadmap}
-                          className="focus-ring inline-flex items-center gap-2 rounded-lg bg-ink-900 px-4 py-3 text-sm font-black text-white transition hover:bg-brand-600 dark:bg-brand-400 dark:text-ink-950"
-                        >
-                          <Map size={17} />
+                        <Button type="button" onClick={showRoadmap} variant="primary" size="sm">
+                          <Map size={14} />
                           {copy.viewRoadmap}
-                        </button>
-                        <Link
-                          to="/resources"
-                          onClick={() => setIsOpen(false)}
-                          className="focus-ring inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-black text-ink-900 transition hover:border-brand-300 dark:border-white/10 dark:bg-white/5 dark:text-white"
-                        >
-                          <Sparkles size={17} />
+                        </Button>
+                        <Button as={Link} to="/resources" onClick={() => setIsOpen(false)} variant="secondary" size="sm">
                           {copy.exploreResources}
-                        </Link>
-                        <button
-                          type="button"
-                          onClick={exportRoadmap}
-                          className="focus-ring inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-black text-ink-900 transition hover:border-brand-300 dark:border-white/10 dark:bg-white/5 dark:text-white"
-                        >
-                          <Download size={17} />
+                        </Button>
+                        <Button type="button" onClick={exportRoadmap} variant="secondary" size="sm">
+                          <Download size={14} />
                           {copy.exportRoadmap}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={restartQuiz}
-                          className="focus-ring inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-black text-ink-900 transition hover:border-coral-300 dark:border-white/10 dark:bg-white/5 dark:text-white"
-                        >
-                          <RefreshCcw size={17} />
+                        </Button>
+                        <Button type="button" onClick={restartQuiz} variant="ghost" size="sm">
+                          <RefreshCcw size={14} />
                           {copy.restartQuiz}
-                        </button>
+                        </Button>
                       </div>
                     )}
                   </footer>
                 </div>
 
-                <aside className="hidden border-slate-200 bg-white/70 p-5 dark:border-white/10 dark:bg-white/[0.035] lg:block ltr:border-l rtl:border-r">
-                  <div className="rounded-lg border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/[0.06]">
-                    <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">{copy.signals}</p>
-                    <div className="mt-4 space-y-3">
-                      {copy.signalItems.map((signal) => (
-                        <div key={signal} className="flex items-center justify-between gap-3">
-                          <span className="text-sm font-bold text-slate-600 dark:text-slate-300">{signal}</span>
-                          <span className="h-2 w-16 rounded-full bg-slate-200 dark:bg-white/10">
-                            <span className="block h-2 rounded-full bg-brand-400" style={{ width: `${Math.max(18, progress)}%` }} />
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                <aside className="hidden border-border p-4 lg:block ltr:border-l rtl:border-r dark:border-zinc-800">
+                  <p className="text-label">{copy.signals}</p>
+                  <div className="mt-3 space-y-2">
+                    {copy.signalItems.map((signal) => (
+                      <div key={signal} className="flex items-center justify-between gap-2">
+                        <span className="text-xs text-ink-secondary dark:text-zinc-400">{signal}</span>
+                        <span className="h-1 w-12 overflow-hidden rounded-full bg-surface-subtle dark:bg-zinc-800">
+                          <span className="block h-1 rounded-full bg-accent" style={{ width: `${Math.max(12, progress)}%` }} />
+                        </span>
+                      </div>
+                    ))}
                   </div>
 
-                  <div className="mt-4 rounded-lg border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/[0.06]">
-                    <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">{copy.howItWorks}</p>
-                    <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{copy.howItWorksText}</p>
+                  <div className="mt-4 rounded border border-border p-3 dark:border-zinc-800">
+                    <p className="text-label">{copy.howItWorks}</p>
+                    <p className="mt-2 text-xs leading-5 text-ink-secondary dark:text-zinc-400">{copy.howItWorksText}</p>
                   </div>
 
                   {results[0] && (
-                    <div className="mt-4 rounded-lg border border-brand-300 bg-brand-400/10 p-4">
-                      <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">{copy.savedResult}</p>
-                      <p className="mt-2 text-lg font-black text-ink-950 dark:text-white">{results[0].shortName}</p>
-                      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{results[0].match}% {copy.stored}</p>
+                    <div className="mt-3 rounded border border-accent/30 bg-accent-muted/20 p-3 dark:border-accent/20 dark:bg-accent/5">
+                      <p className="text-label">{copy.savedResult}</p>
+                      <p className="mt-1 text-sm font-medium text-ink dark:text-zinc-100">{results[0].shortName}</p>
+                      <p className="text-xs text-ink-secondary dark:text-zinc-400">{results[0].match}% {copy.stored}</p>
                     </div>
                   )}
                 </aside>

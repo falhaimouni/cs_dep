@@ -1,0 +1,121 @@
+{
+  "majors": [
+    {
+      "id": "cs",
+      "planNumber": "12",
+      "totalCredits": 132,
+      "sourceUrl": "https://www.zu.edu.jo/ar/Collage/Science_and_Technology/Dept_ComputerScience/files/study_plan9.pdf",
+      "name": { "en": "Computer Science - 132 Credit Plan", "ar": "علم الحاسوب - خطة 132 ساعة" },
+      "semesters": [
+        {
+          "id": "cs-university-required",
+          "requiredCredits": 18,
+          "label": { "en": "University Requirements - Required", "ar": "متطلبات الجامعة الإجبارية" },
+          "courses": [
+            { "code": "0200104", "name": { "en": "National Education", "ar": "التربية الوطنية" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200105", "name": { "en": "Communication Skills - Arabic 1", "ar": "مهارات الاتصال والتواصل (اللغة العربية 1)" }, "credits": 3, "prerequisites": ["0200150", "0201001"], "type": "theory", "mode": "online" },
+            { "code": "0200106", "name": { "en": "Communication Skills - English 1", "ar": "مهارات الاتصال والتواصل (اللغة الإنجليزية 1)" }, "credits": 3, "prerequisites": ["0200151", "0202001"], "type": "theory", "mode": "online" },
+            { "code": "0200110", "name": { "en": "Military Science", "ar": "العلوم العسكرية" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200111", "name": { "en": "Islamic Culture and Contemporary Issues", "ar": "الثقافة الاسلامية وقضايا العصر" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200115", "name": { "en": "Community Development and Voluntary Work", "ar": "تنمية المجتمع والعمل التطوعي" }, "credits": 0, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200153", "name": { "en": "Life Skills", "ar": "المهارات الحياتية" }, "credits": 1, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200154", "name": { "en": "Leadership and Social Responsibility", "ar": "القيادة والمسؤولية المجتمعية" }, "credits": 1, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0400202", "name": { "en": "Entrepreneurship and Innovation", "ar": "الريادة والابتكار" }, "credits": 1, "prerequisites": [], "type": "theory", "mode": "online" }
+          ]
+        },
+        {
+          "id": "cs-university-elective",
+          "requiredCredits": 9,
+          "label": { "en": "University Requirements - Elective", "ar": "متطلبات الجامعة الإختيارية" },
+          "courses": [
+            { "code": "0200113", "name": { "en": "History of Jordan and Palestine", "ar": "تاريخ الاردن وفلسطين" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200114", "name": { "en": "Jerusalem: History and Civilization", "ar": "القدس تاريخ وحضارة" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200122", "name": { "en": "Principles of Education", "ar": "مبادئ علم التربية" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200125", "name": { "en": "Principles of Law", "ar": "مبادئ علم القانون" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200127", "name": { "en": "University Student Ethics", "ar": "اخلاقيات الطالب الجامعي" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200130", "name": { "en": "Terrorism Crimes", "ar": "جرائم الارهاب" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0200156", "name": { "en": "Development and Environment", "ar": "التنمية والبيئة" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0300123", "name": { "en": "Principles of Astronomy", "ar": "مبادئ علم الفلك" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0300124", "name": { "en": "Scientific Culture", "ar": "الثقافة العلمية" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0300157", "name": { "en": "Digital Culture", "ar": "الثقافة الرقمية" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" },
+            { "code": "0300161", "name": { "en": "First Aid", "ar": "الاسعافات الاولية" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "online" }
+          ]
+        },
+        {
+          "id": "cs-college-required",
+          "requiredCredits": 21,
+          "label": { "en": "College Requirements - Required", "ar": "متطلبات الكلية الإجبارية" },
+          "courses": [
+            { "code": "0300153", "name": { "en": "Fundamentals of Information Technology", "ar": "اساسيات تكنولوجيا المعلومات" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "blended" },
+            { "code": "0300154", "name": { "en": "Fundamentals of Cybersecurity", "ar": "اساسيات الامن السيبراني" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "in-person" },
+            { "code": "0300155", "name": { "en": "Digital Logic Design", "ar": "تصميم المنطق الرقمي" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "in-person" },
+            { "code": "0300220", "name": { "en": "Discrete Mathematics", "ar": "رياضيات متقطعة" }, "credits": 3, "prerequisites": ["0300153"], "type": "theory", "mode": "blended" },
+            { "code": "1501110", "name": { "en": "Computer Programming 1", "ar": "برمجة الحاسوب (1)" }, "credits": 3, "prerequisites": ["0300153"], "type": "theory", "mode": "in-person" },
+            { "code": "1501112", "name": { "en": "Computer Programming 2", "ar": "برمجة الحاسوب (2)" }, "credits": 3, "prerequisites": ["1501110"], "type": "theory", "mode": "in-person" },
+            { "code": "1501221", "name": { "en": "Data Structures", "ar": "تراكيب البيانات" }, "credits": 3, "prerequisites": ["1501112"], "type": "theory", "mode": "in-person" },
+            { "code": "1509999", "name": { "en": "IT College Student Seminar", "ar": "حلقة بحث لطلبة كلية تكنولوجيا المعلومات" }, "credits": 0, "prerequisites": [], "type": "theory", "mode": "in-person" }
+          ]
+        },
+        {
+          "id": "cs-major-required",
+          "requiredCredits": 66,
+          "label": { "en": "Major Requirements - Required", "ar": "متطلبات التخصص الإجبارية" },
+          "courses": [
+            { "code": "1501111", "name": { "en": "Computer Programming Lab 1", "ar": "مختبر برمجة الحاسوب (1)" }, "credits": 1, "prerequisites": ["0300153"], "type": "practical", "mode": "in-person" },
+            { "code": "1501113", "name": { "en": "Computer Programming Lab 2", "ar": "مختبر برمجة الحاسوب (2)" }, "credits": 1, "prerequisites": ["1501111"], "type": "practical", "mode": "in-person" },
+            { "code": "1501212", "name": { "en": "Visual Programming", "ar": "برمجة مرئية" }, "credits": 3, "prerequisites": ["1501222"], "type": "project-based", "mode": "blended" },
+            { "code": "1501222", "name": { "en": "Database Systems", "ar": "نظم قواعد البيانات" }, "credits": 3, "prerequisites": ["1501112"], "type": "project-based", "mode": "blended" },
+            { "code": "1501231", "name": { "en": "Computer Organization and Architecture", "ar": "تنظيم وعمارة الحاسوب" }, "credits": 3, "prerequisites": ["0300155"], "type": "theory", "mode": "blended" },
+            { "code": "1501272", "name": { "en": "Numerical Methods for Computer Science", "ar": "طرق عددية لعلم الحاسوب" }, "credits": 3, "prerequisites": ["0301241"], "type": "theory", "mode": "in-person" },
+            { "code": "1501321", "name": { "en": "Design and Analysis of Algorithms", "ar": "تصميم وتحليل الخوارزميات" }, "credits": 3, "prerequisites": ["1501221"], "type": "project-based", "mode": "in-person" },
+            { "code": "1501322", "name": { "en": "Theory of Computation", "ar": "نظرية الحسابات" }, "credits": 3, "prerequisites": ["1501221"], "type": "theory", "mode": "in-person" },
+            { "code": "1501328", "name": { "en": "Systems Analysis", "ar": "تحليل نظم" }, "credits": 3, "prerequisites": ["1501222"], "type": "project-based", "mode": "blended" },
+            { "code": "1501340", "name": { "en": "Computer Networks", "ar": "شبكات الحاسوب" }, "credits": 3, "prerequisites": ["1501112"], "type": "project-based", "mode": "in-person" },
+            { "code": "1501365", "name": { "en": "Computer Field Training", "ar": "تدريب ميداني للحاسوب" }, "credits": 3, "prerequisites": [], "type": "practical", "mode": "blended" },
+            { "code": "1501385", "name": { "en": "Smartphone Programming", "ar": "برمجة الهواتف الذكية" }, "credits": 3, "prerequisites": ["1501112"], "type": "project-based", "mode": "blended" },
+            { "code": "1501430", "name": { "en": "Operating Systems", "ar": "نظم التشغيل" }, "credits": 3, "prerequisites": ["1501221"], "type": "project-based", "mode": "blended" },
+            { "code": "1501437", "name": { "en": "Database Tools and Languages", "ar": "ادوات ولغات قواعد البيانات" }, "credits": 3, "prerequisites": ["1501222"], "type": "project-based", "mode": "in-person" },
+            { "code": "1501465", "name": { "en": "Computer Science Project 1", "ar": "مشروع (1) في علم الحاسوب" }, "credits": 3, "prerequisites": [], "type": "practical", "mode": "blended" },
+            { "code": "1501466", "name": { "en": "Computer Science Project 2", "ar": "مشروع (2) في علم الحاسوب" }, "credits": 3, "prerequisites": ["1501465"], "type": "practical", "mode": "blended" },
+            { "code": "1503270", "name": { "en": "Introduction to Software Engineering", "ar": "مقدمة لهندسة البرمجيات" }, "credits": 3, "prerequisites": ["0300153"], "type": "theory", "mode": "blended" },
+            { "code": "1505101", "name": { "en": "Python Programming", "ar": "البرمجة بلغة بايثون" }, "credits": 3, "prerequisites": ["1501110"], "type": "project-based", "mode": "in-person" },
+            { "code": "1505201", "name": { "en": "Introduction to Artificial Intelligence", "ar": "مقدمة في الذكاء الاصطناعي" }, "credits": 3, "prerequisites": ["0300153"], "type": "theory", "mode": "in-person" },
+            { "code": "1505311", "name": { "en": "Machine Learning", "ar": "تعلم الالة" }, "credits": 3, "prerequisites": ["1505101", "1505201"], "type": "theory", "mode": "in-person" },
+            { "code": "1506180", "name": { "en": "Web Programming 1", "ar": "برمجة ويب (1)" }, "credits": 3, "prerequisites": ["1501110"], "type": "theory", "mode": "in-person" },
+            { "code": "1506181", "name": { "en": "Web Programming Lab 1", "ar": "مختبر برمجة ويب (1)" }, "credits": 1, "prerequisites": ["1501111"], "type": "practical", "mode": "in-person" },
+            { "code": "1506280", "name": { "en": "Web Programming 2", "ar": "برمجة ويب (2)" }, "credits": 3, "prerequisites": ["1506180"], "type": "project-based", "mode": "in-person" },
+            { "code": "1506348", "name": { "en": "Wireless Networks", "ar": "الشبكات اللاسلكية" }, "credits": 3, "prerequisites": ["1501340"], "type": "theory", "mode": "in-person" }
+          ]
+        },
+        {
+          "id": "cs-major-elective",
+          "requiredCredits": 9,
+          "label": { "en": "Major Requirements - Elective", "ar": "متطلبات التخصص الإختيارية" },
+          "courses": [
+            { "code": "1501211", "name": { "en": "Special Programming Languages", "ar": "لغات خاصة في البرمجة" }, "credits": 3, "prerequisites": ["1501112"], "type": "project-based", "mode": "blended" },
+            { "code": "1501323", "name": { "en": "Operations Research", "ar": "بحوث العمليات" }, "credits": 3, "prerequisites": ["1501221"], "type": "project-based", "mode": "blended" },
+            { "code": "1501324", "name": { "en": "Programming Languages", "ar": "لغات البرمجة" }, "credits": 3, "prerequisites": ["1501112"], "type": "project-based", "mode": "blended" },
+            { "code": "1501360", "name": { "en": "Scientific Research Methods and Ethics", "ar": "مناهج واخلاقيات البحث العلمي" }, "credits": 3, "prerequisites": [], "type": "project-based", "mode": "blended" },
+            { "code": "1501435", "name": { "en": "Special Topics in Computer Science 1", "ar": "موضوعات خاصة في علم الحاسوب (1)" }, "credits": 3, "prerequisites": [], "type": "project-based", "mode": "blended" },
+            { "code": "1501436", "name": { "en": "Special Topics in Computer Science 2", "ar": "موضوعات خاصة في علم الحاسوب (2)" }, "credits": 3, "prerequisites": [], "type": "project-based", "mode": "blended" },
+            { "code": "1501438", "name": { "en": "Cloud Computing", "ar": "الحوسبة السحابية" }, "credits": 3, "prerequisites": ["1501340", "1501430"], "type": "project-based", "mode": "blended" },
+            { "code": "1501439", "name": { "en": "Parallel and Distributed Systems", "ar": "النظم المتوازية والموزعة" }, "credits": 3, "prerequisites": ["1501430"], "type": "project-based", "mode": "blended" },
+            { "code": "1503434", "name": { "en": "Database Systems Administration", "ar": "ادارة نظم قواعد البيانات" }, "credits": 3, "prerequisites": ["1501222"], "type": "project-based", "mode": "blended" },
+            { "code": "1506341", "name": { "en": "Information and Network Security", "ar": "امن المعلومات والشبكات" }, "credits": 3, "prerequisites": ["0300154", "1501340"], "type": "project-based", "mode": "blended" },
+            { "code": "1506493", "name": { "en": "Internet of Things", "ar": "إنترنت الأشياء" }, "credits": 3, "prerequisites": ["1501340"], "type": "project-based", "mode": "blended" }
+          ]
+        },
+        {
+          "id": "cs-supporting",
+          "requiredCredits": 9,
+          "label": { "en": "Supporting Requirements", "ar": "المتطلبات المساندة" },
+          "courses": [
+            { "code": "0200215", "name": { "en": "English for IT Purposes (ESP-IT)", "ar": "لغة انجليزية لأغراض خاصة بتكتولوجيا المعلومات (ESP-IT)" }, "credits": 3, "prerequisites": ["0200106"], "type": "theory", "mode": "blended" },
+            { "code": "0300104", "name": { "en": "Statistics and Probability for IT", "ar": "الإحصاء والاحتمالات لتكنولوجيا المعلومات" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "blended" },
+            { "code": "0301245", "name": { "en": "Linear Algebra for IT", "ar": "الجبر الخطي لتكنولوجيا المعلومات" }, "credits": 3, "prerequisites": [], "type": "theory", "mode": "in-person" }
+          ]
+        }
+      ]
+    }
+  ]
+}

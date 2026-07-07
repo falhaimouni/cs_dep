@@ -1,0 +1,60 @@
+{
+  "categories": ["announcements", "exams", "workshops", "internships", "competitions"],
+  "items": [
+    {
+      "id": "final-exam-schedule",
+      "category": "exams",
+      "featured": true,
+      "date": "2026-07-12",
+      "title": { "en": "Final exam schedule published", "ar": "تم نشر جدول الامتحانات النهائية" },
+      "summary": {
+        "en": "Check the updated exam rooms, course timings, and conflict reporting form before the end of the week.",
+        "ar": "راجع قاعات الامتحانات المحدثة ومواعيد المواد ونموذج التعارض قبل نهاية الأسبوع."
+      }
+    },
+    {
+      "id": "react-lab",
+      "category": "workshops",
+      "featured": true,
+      "date": "2026-07-15",
+      "title": { "en": "React lab: components and routing", "ar": "مختبر React: المكونات والتوجيه" },
+      "summary": {
+        "en": "A hands-on session for students building their first production-style React interface.",
+        "ar": "جلسة عملية للطلاب الذين يبنون أول واجهة React بأسلوب قريب من الإنتاج."
+      }
+    },
+    {
+      "id": "internship-pack",
+      "category": "internships",
+      "featured": false,
+      "date": "2026-07-18",
+      "title": { "en": "Summer internship preparation pack", "ar": "حزمة التحضير للتدريب الصيفي" },
+      "summary": {
+        "en": "Resume checklist, GitHub portfolio tips, interview questions, and application tracker templates.",
+        "ar": "قائمة مراجعة للسيرة الذاتية ونصائح GitHub وأسئلة مقابلات وقوالب متابعة التقديم."
+      }
+    },
+    {
+      "id": "ctf-team",
+      "category": "competitions",
+      "featured": false,
+      "date": "2026-07-20",
+      "title": { "en": "CTF practice team registration", "ar": "التسجيل لفريق تدريب CTF" },
+      "summary": {
+        "en": "Join weekly cybersecurity challenges and prepare for beginner-friendly competitions.",
+        "ar": "انضم إلى تحديات الأمن السيبراني الأسبوعية واستعد للمسابقات المناسبة للمبتدئين."
+      }
+    },
+    {
+      "id": "resource-cleanup",
+      "category": "announcements",
+      "featured": false,
+      "date": "2026-07-22",
+      "title": { "en": "Resource library cleanup week", "ar": "أسبوع ترتيب مكتبة الموارد" },
+      "summary": {
+        "en": "Help review duplicated files, outdated links, and missing lecture summaries in the shared library.",
+        "ar": "ساعد في مراجعة الملفات المكررة والروابط القديمة والملخصات الناقصة في المكتبة المشتركة."
+      }
+    }
+  ]
+}

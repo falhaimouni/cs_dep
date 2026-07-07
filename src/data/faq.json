@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "question": { "en": "Does this website need a backend?", "ar": "هل يحتاج الموقع إلى Backend؟" },
+      "answer": { "en": "No. This version is frontend-only and uses local JSON plus service wrappers that can later call real APIs.", "ar": "لا. هذه النسخة تعمل على الواجهة فقط وتستخدم JSON محلي مع خدمات يمكن لاحقا ربطها بواجهات حقيقية." }
+    },
+    {
+      "question": { "en": "Is the assistant connected to AI?", "ar": "هل المساعد متصل بالذكاء الاصطناعي؟" },
+      "answer": { "en": "No. It is a professional mockup with local responses, designed so an AI API can be added later.", "ar": "لا. هو نموذج واجهة احترافي بإجابات محلية، ومصمم بحيث يمكن إضافة API ذكاء اصطناعي لاحقا." }
+    },
+    {
+      "question": { "en": "Can content be updated safely?", "ar": "هل يمكن تحديث المحتوى بسهولة؟" },
+      "answer": { "en": "Yes. Most content lives in JSON files under src/data, while pages consume it through service functions.", "ar": "نعم. معظم المحتوى موجود في ملفات JSON داخل src/data، والصفحات تستخدمه عبر ملفات الخدمات." }
+    }
+  ]
+}

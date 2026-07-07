@@ -1,17 +1,22 @@
 import { motion } from 'framer-motion';
 
-export default function SectionHeader({ eyebrow, title, description, align = 'start' }) {
+const MotionDiv = motion.div;
+
+export default function SectionHeader({ eyebrow, title, description, align = 'start', action }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
+    <MotionDiv
+      initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.45 }}
-      className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.2 }}
+      className={`${align === 'center' ? 'mx-auto text-center' : ''} ${action ? 'flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between' : ''}`}
     >
-      {eyebrow && <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-brand-600 dark:text-brand-300">{eyebrow}</p>}
-      <h2 className="text-3xl font-black leading-tight text-ink-950 dark:text-white md:text-4xl">{title}</h2>
-      {description && <p className="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">{description}</p>}
-    </motion.div>
+      <div className={align === 'center' ? 'mx-auto max-w-2xl' : 'max-w-2xl'}>
+        {eyebrow && <p className="text-label mb-2">{eyebrow}</p>}
+        <h2 className="text-xl font-semibold tracking-tight text-ink dark:text-zinc-50 sm:text-2xl">{title}</h2>
+        {description && <p className="mt-2 text-sm leading-6 text-ink-secondary dark:text-zinc-400">{description}</p>}
+      </div>
+      {action}
+    </MotionDiv>
   );
 }

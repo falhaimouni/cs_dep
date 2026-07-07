@@ -1,6 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import GlassCard from '../ui/GlassCard.jsx';
+import Badge from '../ui/Badge.jsx';
+import Panel from '../ui/Panel.jsx';
 
 export default function ResourceCard({ item, delay = 0 }) {
   const { t } = useTranslation();
@@ -9,26 +10,26 @@ export default function ResourceCard({ item, delay = 0 }) {
   const types = t('resources.types', { returnObjects: true });
 
   return (
-    <GlassCard delay={delay} className="flex h-full flex-col gap-5">
-      <div className="flex items-start justify-between gap-4">
-        <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-gradient-to-br ${item.color} text-ink-950`}>
-          <Icon size={22} />
+    <Panel delay={delay} className="group flex h-full flex-col">
+      <div className="mb-3 flex items-start justify-between gap-3">
+        <div className="grid h-8 w-8 place-items-center rounded border border-border bg-surface-muted text-ink-secondary dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
+          <Icon size={16} />
         </div>
-        <a href="https://drive.google.com" className="focus-ring grid h-9 w-9 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-900/5 hover:text-brand-600 dark:text-slate-400 dark:hover:bg-white/10">
-          <ExternalLink size={17} />
+        <a
+          href="https://drive.google.com"
+          className="focus-ring grid h-7 w-7 place-items-center rounded text-ink-tertiary opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-surface-subtle hover:text-accent dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-teal-400"
+          aria-label="Open resource"
+        >
+          <ExternalLink size={14} />
         </a>
       </div>
-      <div>
-        <h3 className="text-xl font-black">{t(`${base}.title`)}</h3>
-        <p className="mt-2 leading-7 text-slate-600 dark:text-slate-300">{t(`${base}.desc`)}</p>
-      </div>
-      <div className="mt-auto flex flex-wrap gap-2">
+      <h3 className="text-sm font-semibold text-ink dark:text-zinc-100">{t(`${base}.title`)}</h3>
+      <p className="mt-1.5 flex-1 text-sm leading-5 text-ink-secondary dark:text-zinc-400">{t(`${base}.desc`)}</p>
+      <div className="mt-3 flex flex-wrap gap-1.5">
         {types.map((type) => (
-          <span key={type} className="rounded-md border border-slate-200 bg-white/60 px-2.5 py-1 text-xs font-bold text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
-            {type}
-          </span>
+          <Badge key={type}>{type}</Badge>
         ))}
       </div>
-    </GlassCard>
+    </Panel>
   );
 }

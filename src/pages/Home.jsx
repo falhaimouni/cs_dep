@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 const MotionDiv = motion.div;
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import FAQ from '../components/FAQ.jsx';
-import FeedbackBar from '../components/FeedbackBar.jsx';
 import WorkshopCard from '../components/cards/WorkshopCard.jsx';
 import Button from '../components/ui/Button.jsx';
 import Panel from '../components/ui/Panel.jsx';
@@ -95,8 +93,6 @@ export default function Home() {
         </div>
       </section>
 
-      <FeedbackBar />
-
       <section className="page-shell py-12">
         <SectionHeader
           eyebrow={t('home.featured.eyebrow')}
@@ -116,7 +112,6 @@ export default function Home() {
         </div>
       </section>
 
-      <FAQ />
     </>
   );
 }

@@ -48,6 +48,7 @@ export default function Team() {
                       </span>
                     </div>
                   </div>
+                  
                   <div className="mt-5 flex gap-2">
                     {socials.map(({ icon, label }) => (
                       <button key={label} type="button" className="icon-button" aria-label={label}>

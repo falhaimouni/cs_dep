@@ -96,7 +96,7 @@ export const careerPaths = {
     difficulty: 'Beginner friendly',
     learningTime: '3-6 months',
     skills: ['Visual design', 'User research', 'Wireframing', 'Prototyping', 'Communication'],
-    technologies: ['Figma', 'FigJam', 'Design systems', 'Notion', 'Maze', 'HTML/CSS basics'],
+    technologies: ['Figma', 'FigJam', 'Design systems', 'User flows', 'Maze', 'HTML/CSS basics'],
     roadmap: ['Learn design principles', 'Practice Figma daily', 'Create wireframes', 'Prototype app flows', 'Build a case study portfolio'],
   },
   embedded: {

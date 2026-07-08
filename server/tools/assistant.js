@@ -40,7 +40,6 @@ async function getAssistantContext() {
       description: course.description,
       links: {
         drive: course.resources.drive,
-        notion: course.resources.notion,
         youtube: course.resources.youtube,
       },
       pdfs: course.resources.pdfs,
@@ -67,7 +66,7 @@ function getIntentActions(normalized, language) {
       action(isArabic ? 'عرض خطة المواد' : 'View Course Plan', '/courses'),
     ];
   }
-  if (/(resource|pdf|drive|notion|youtube|مصادر|موارد|ملفات)/i.test(normalized)) {
+  if (/(resource|pdf|drive|youtube|مصادر|موارد|ملفات)/i.test(normalized)) {
     return [action(isArabic ? 'افتح الموارد' : 'Open Resources', '/resources')];
   }
   if (/(code|review|bug|كود|مراجعة)/i.test(normalized)) {
@@ -83,7 +82,7 @@ function getIntentActions(normalized, language) {
 }
 
 async function buildResourceAnswer(normalized, language) {
-  if (!/(resource|resources|pdf|drive|notion|youtube|مصادر|موارد|ملفات)/i.test(normalized)) return null;
+  if (!/(resource|resources|pdf|drive|youtube|مصادر|موارد|ملفات)/i.test(normalized)) return null;
 
   const resources = await readJsonData('resources.json');
   const isArabic = isArabicLanguage(language);
@@ -97,8 +96,8 @@ async function buildResourceAnswer(normalized, language) {
   const practice = course.resources.practice.slice(0, 2).join(', ');
   return {
     content: isArabic
-      ? `وجدت لك موارد ${title}: ملفات PDF مثل ${pdfs}، شرائح، تمارين مثل ${practice}، وروابط Drive وNotion وYouTube. افتح صفحة التفاصيل لرؤية كل الموارد.`
-      : `I found ${title} resources: PDFs like ${pdfs}, slides, practice such as ${practice}, plus Drive, Notion, and YouTube links. Open the detail page to see everything.`,
+      ? `وجدت لك موارد ${title}: ملفات PDF مثل ${pdfs}، شرائح، تمارين مثل ${practice}، وروابط Drive وYouTube. افتح صفحة التفاصيل لرؤية كل الموارد.`
+      : `I found ${title} resources: PDFs like ${pdfs}, slides, practice such as ${practice}, plus Drive, and YouTube links. Open the detail page to see everything.`,
     actions: [action(isArabic ? 'فتح تفاصيل المادة' : 'Open course resources', `/resources/${course.id}`)],
   };
 }

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import FeedbackBar from './components/FeedbackBar.jsx';
 import StudentAIAssistant from './components/StudentAIAssistant.jsx';
 import Footer from './components/layout/Footer.jsx';
 import Navbar from './components/layout/Navbar.jsx';
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <FeedbackBar />
       <StudentAIAssistant />
       <Footer />
     </div>

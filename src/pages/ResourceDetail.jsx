@@ -35,15 +35,10 @@ export default function ResourceDetail() {
   return (
     <section className="page-shell py-10 sm:py-12">
       <SectionHeader eyebrow={course.code} title={localize(course.title, i18n.language)} description={localize(course.description, i18n.language)} action={<Button as={Link} to="/resources" variant="secondary">{t('common.back')}</Button>} />
-      <div className="mt-8 grid gap-3 md:grid-cols-3">
+      <div className="mt-8 grid gap-3 md:grid-cols-2">
         <a href={course.resources.drive} target="_blank" rel="noreferrer" className="group rounded-xl border border-border bg-surface p-5 transition hover:-translate-y-0.5 hover:border-accent dark:border-zinc-800 dark:bg-zinc-950">
           <FolderOpen className="text-accent" size={22} />
           <h3 className="mt-4 font-semibold text-ink dark:text-zinc-50">Google Drive</h3>
-          <p className="mt-1 text-sm text-ink-secondary dark:text-zinc-400">{t('resources.openCollection')}</p>
-        </a>
-        <a href={course.resources.notion} target="_blank" rel="noreferrer" className="group rounded-xl border border-border bg-surface p-5 transition hover:-translate-y-0.5 hover:border-accent dark:border-zinc-800 dark:bg-zinc-950">
-          <FileText className="text-accent" size={22} />
-          <h3 className="mt-4 font-semibold text-ink dark:text-zinc-50">Notion</h3>
           <p className="mt-1 text-sm text-ink-secondary dark:text-zinc-400">{t('resources.openCollection')}</p>
         </a>
         <a href={course.resources.youtube} target="_blank" rel="noreferrer" className="group rounded-xl border border-border bg-surface p-5 transition hover:-translate-y-0.5 hover:border-accent dark:border-zinc-800 dark:bg-zinc-950">

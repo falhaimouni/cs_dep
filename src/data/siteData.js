@@ -10,7 +10,6 @@ import {
   Globe2,
   GraduationCap,
   HardDrive,
-  Layers3,
   Network,
   ShieldCheck,
   Trophy,
@@ -26,9 +25,8 @@ export const stats = [
 
 export const quickLinks = [
   { titleKey: 'home.quick.drive', descKey: 'home.quick.driveDesc', icon: HardDrive, href: 'https://drive.google.com' },
-  { titleKey: 'home.quick.notion', descKey: 'home.quick.notionDesc', icon: Layers3, href: 'https://notion.so' },
   { titleKey: 'home.quick.forms', descKey: 'home.quick.formsDesc', icon: Users, href: 'https://forms.google.com' },
-  { titleKey: 'home.quick.recordings', descKey: 'home.quick.recordingsDesc', icon: CalendarDays, href: 'https://www.youtube.com/@ahmadalhashash6056' },
+  { titleKey: 'home.quick.recordings', descKey: 'home.quick.recordingsDesc', icon: CalendarDays, href: 'https://www.youtube.com/@IT_ZONE_ZU' },
 ];
 
 export const resources = [
@@ -56,10 +54,10 @@ export const roadmaps = [
 ];
 
 export const teamGroups = [
-  { key: 'leader', members: ['Farah alhaimouni'] },
-  { key: 'coLeaders', members: ['Ahmad alhashash'] },
-  // { key: 'academic', members: ['Lina Samir', 'Hana Ali', 'Karim Zaid'] },
-  // { key: 'technical', members: ['Maya Noor', 'Adam Saleh', 'Rami Tarek'] },
+  { key: 'leader', members: ['Farah Alhaimouni'] },
+  { key: 'coLeaders', members: ['Ahmad Alhashash'] },
+  { key: 'academic', members: ['Zainab Abuzayed', 'Mohammad Abu Srhan','Maryam Ahmad', 'Rousl Al-Shoukha', 'Alaa Alkhrysat'] },
+  { key: 'technical', members: ['Farah', 'Raghdah'] },
 ];
 
 export const communityItems = [
@@ -67,4 +65,4 @@ export const communityItems = [
   { key: 'competitions', icon: Trophy },
   { key: 'internships', icon: BookOpen },
   { key: 'achievements', icon: Users },
-];
+]

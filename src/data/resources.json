@@ -9,8 +9,7 @@
       "resources": {
         "pdfs": ["Complexity summary", "Graph algorithms notes"],
         "drive": "https://drive.google.com",
-        "notion": "https://notion.so",
-        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "youtube": "https://www.youtube.com/@IT_ZONE_ZU",
         "slides": ["Sorting lecture", "Dynamic programming workshop"],
         "practice": ["Big-O worksheet", "Shortest path problems", "DP practice set"]
       }
@@ -24,8 +23,7 @@
       "resources": {
         "pdfs": ["Trees cheat sheet", "Hash tables guide"],
         "drive": "https://drive.google.com",
-        "notion": "https://notion.so",
-        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "youtube": "https://www.youtube.com/@IT_ZONE_ZU",
         "slides": ["Linked lists", "Trees and heaps"],
         "practice": ["Stack exercises", "BST implementation", "Hash map mini lab"]
       }
@@ -39,8 +37,7 @@
       "resources": {
         "pdfs": ["Scheduling notes", "Memory management summary"],
         "drive": "https://drive.google.com",
-        "notion": "https://notion.so",
-        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "youtube": "https://www.youtube.com/@IT_ZONE_ZU",
         "slides": ["Processes and threads", "Synchronization"],
         "practice": ["Semaphore problems", "Paging worksheet", "CPU scheduling cases"]
       }
@@ -54,8 +51,7 @@
       "resources": {
         "pdfs": ["SQL revision", "Normalization examples"],
         "drive": "https://drive.google.com",
-        "notion": "https://notion.so",
-        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "youtube": "https://www.youtube.com/@IT_ZONE_ZU",
         "slides": ["ER modeling", "Transactions"],
         "practice": ["SQL query pack", "ER case study", "Indexing quiz"]
       }
@@ -69,8 +65,7 @@
       "resources": {
         "pdfs": ["Programming basics", "Debugging checklist"],
         "drive": "https://drive.google.com",
-        "notion": "https://notion.so",
-        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "youtube": "https://www.youtube.com/@IT_ZONE_ZU",
         "slides": ["Variables and loops", "Functions"],
         "practice": ["Loops practice", "Functions lab", "Mini calculator project"]
       }
@@ -84,8 +79,7 @@
       "resources": {
         "pdfs": ["HTML semantics", "React state guide"],
         "drive": "https://drive.google.com",
-        "notion": "https://notion.so",
-        "youtube": "https://www.youtube.com/@ahmadalhashash6056",
+        "youtube": "https://www.youtube.com/@IT_ZONE_ZU",
         "slides": ["Responsive layout", "React components"],
         "practice": ["Portfolio page", "API cards", "Accessibility checklist"]
       }

@@ -26,7 +26,7 @@
     "menu": "Open menu"
   },
   "footer": {
-    "copy": "A frontend-only platform for organizing lectures, workshops, roadmaps, community opportunities, and external learning links.",
+    "copy": "A platform for organizing lectures, workshops, roadmaps, community opportunities, and external learning links.",
     "join": "Join the community"
   },
   "home": {
@@ -36,7 +36,7 @@
       "subtitle": "Access department resources, follow career paths, register for workshops, and connect with the students building the technical community.",
       "cta": "Explore resources",
       "secondary": "View workshops",
-      "code": "const community = {\n  resources: ['Drive', 'Notion', 'Recordings'],\n  tracks: ['Web', 'AI', 'Cybersecurity', 'DevOps'],\n  mission: 'Students helping students build the future'\n};"
+      "code": "const community = {\n  resources: ['Drive', 'Forms', 'Recordings'],\n  tracks: ['Web', 'AI', 'Cybersecurity', 'DevOps'],\n  mission: 'Students helping students build the future'\n};"
     },
     "stats": {
       "resources": "organized files",
@@ -60,11 +60,9 @@
     "quick": {
       "eyebrow": "Quick access",
       "title": "Everything links to the tools students already use",
-      "desc": "Connect the frontend to Google Drive, Notion, Google Forms, recordings, and curated external resources.",
+      "desc": "Connect the frontend to Google Drive, Google Forms, recordings, and curated external resources.",
       "drive": "Google Drive",
       "driveDesc": "Lecture notes, sheets, summaries, and organized subject folders.",
-      "notion": "Notion Workspace",
-      "notionDesc": "Roadmaps, checklists, project ideas, and semester plans.",
       "forms": "Google Forms",
       "formsDesc": "Workshop registration, join requests, and feedback forms.",
       "recordings": "Recordings",
@@ -254,24 +252,5 @@
     "title": "Share suggestions that improve the community",
     "desc": "Students can submit workshop ideas, resource requests, event feedback, and improvement suggestions through one simple Google Form.",
     "cta": "Submit an idea"
-  },
-  "faq": {
-    "eyebrow": "FAQ",
-    "title": "Common student questions",
-    "desc": "Keep the platform simple today while leaving room for future upgrades.",
-    "items": [
-      {
-        "question": "Does this website need a backend?",
-        "answer": "No. Phase 1 is fully frontend-only and links to tools like Google Drive, Notion, Forms, and recordings."
-      },
-      {
-        "question": "Can the team update content on GitHub?",
-        "answer": "Yes. Content is organized in reusable data and translation files so contributors can update cards, links, and copy safely."
-      },
-      {
-        "question": "Can this become a full platform later?",
-        "answer": "Yes. Firebase, Supabase, authentication, uploads, comments, and dashboards can be added in later phases."
-      }
-    ]
   }
 }
